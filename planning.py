@@ -89,12 +89,12 @@ class Lightbulb:
 
 
 class Event:
-    def __init__(self, fire_time, event_type, sender_name, next_target):
+    def __init__(self, fire_time, event_type, source, destination):
         self.fire_time = fire_time
         self.type = event_type
 
-        self.sender_name = sender_name
-        self.next_target = next_target
+        self.source = source
+        self.destination = destination
             #light_id, "cloud", "network", "light coordinator"
 
 
@@ -127,7 +127,7 @@ class Simulator:
         while True:
 
 
-class EventHeap():
+
 
 
 class Network(SimObject):
