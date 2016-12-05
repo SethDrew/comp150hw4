@@ -153,7 +153,6 @@ class Cloud(SimObject):
             }
             return [new_event]
 
-e = Event(today, MOTION_EVENT, "network")
 
 
 
