@@ -88,6 +88,8 @@ class Lightbulb:
         self.default_brightness = default_brightness
 
 
+
+#fire time in 10^-6 (microseconds)
 class Event:
     def __init__(self, fire_time, event_type, source, destination):
         self.fire_time = fire_time
