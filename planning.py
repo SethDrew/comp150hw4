@@ -9,7 +9,6 @@ If you have changes, or if I got something wrong, then we should absolutely talk
 """
 
 
-
 MOTION_EVENT = 0 
 """
     OnEvent function:
@@ -67,7 +66,7 @@ GENERATE_UPDATE_DEFAULT_BRIGHTNESS_EVENT = 3
 """
 
 
-UPDATE_DEFAULT_BRIGHTNESS_EVENT = 3
+UPDATE_DEFAULT_BRIGHTNESS_EVENT = 4
 
 """
 OnEvent function:
@@ -90,11 +89,12 @@ class Lightbulb:
 
 
 class Event:
-    def __init__(self, fire_time, event_type, sender_name):
+    def __init__(self, fire_time, event_type, sender_name, next_target):
         self.fire_time = fire_time
         self.type = event_type
 
         self.sender_name = sender_name
+        self.next_target = next_target
             #light_id, "cloud", "network", "light coordinator"
 
 
@@ -105,7 +105,6 @@ class Event:
         params = {
             "light_brightness": .80,
             "light_id"        : "kitchen_1",
-            "sender_name"     : "network" or "kitchen_2" i.e. if kitchen_2 is coordinator sending message through to the network/cloud
         }
 
         """
@@ -118,11 +117,17 @@ class SimObject:
 
 
 class Simulator:
-    def __init__(self, input_events):
+    def __init__(self, input_events=[]):
 
         network = Network() #TODO
         cloud = Cloud()     #TODO
         event_queue = input_events
+    def run():
+        timestep = 0
+        while True:
+
+
+class EventHeap():
 
 
 class Network(SimObject):
@@ -132,11 +137,23 @@ class Network(SimObject):
     def _send_message(self, source, destination, message):
         return [] #event list
 
+
+
 class Cloud(SimObject):
     def __init__(self):
         self.log = [] 
+    def onEvent(self, event):
+        log.append(event)
 
+        if event.type == BRIGHTNESS_CONTROL_EVENT:
+            new_event = Event(event.fire_time, BRIGHTNESS_CONTROL_EVENT, "cloud", "network")
+            new_event.params = {
+                "light_brightness": event.params.light_brightness,
+                "light_id"        : event.params.light_id,
+            }
+            return [new_event]
 
+e = Event(today, MOTION_EVENT, "network")
 
 
 
