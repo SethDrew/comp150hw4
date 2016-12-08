@@ -57,12 +57,11 @@ class NetworkNode(SimObject):
 		return [send_event]
 
 	def _networkReceive(self, event):
-		new_events = event.params["payload"]
+		received_event = event.params["payload"]
 
-		for ev in new_events:
-			ev.fire_time = event.fire_time + FROM_NET_DELAY
+		received_event.fire_time = event.fire_time + FROM_NET_DELAY
 
-		return new_events
+		return [received_event]
 
 	def _udpSend(self, event):
 		next_hop = self.routing_table[self.hosts[event.params["dest"]]]
@@ -123,15 +122,13 @@ def test():
 		# Typical network event parameters:
 		"src" : "LIGHT-1",
 		"dest" : "LIGHT-2",
-		"payload" : [
-			events.Event(
-				events.UPDATE_DEFAULT_BRIGHTNESS_EVENT,
-				None,
-				"CLOUD",
-				"LIGHT-1",
-				params = { "new-brightness" : .2 }
-			)
-		]
+		"payload" : events.Event(
+			events.UPDATE_DEFAULT_BRIGHTNESS_EVENT,
+			None,
+			"LIGHT-1",
+			"LIGHT-2",
+			params = { "new-brightness" : .2 }
+		)
 	}
 
 	net_event = events.Event(
