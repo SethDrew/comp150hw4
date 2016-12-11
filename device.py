@@ -48,7 +48,7 @@ class Device:
 				# udate power consumed using Riemann sum
 				## Power conversion equation:
 				###     --->      |              elapsed time (hours)               |           power usage of device mode (kW)            |      
-				power_consumed += (event.fire_time-self.last_modified)/1000000/60/60*((MAX_LUMENS*self.brightness)/LPW + STANDBY_USAGE)*1000
+				power_consumed += (event.fire_time-self.last_modified)/1000000/60/60*((MAX_LUMENS*self.brightness)/LPW + STANDBY_USAGE)/1000
 				self.last_modified = event.fire_time # update last modified time
 				self.brightness = event.params.light_brightness
 
