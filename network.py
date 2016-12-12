@@ -21,10 +21,10 @@ class SimObject:
 
 class NetworkNode(SimObject):
 	def __init__(self, sim_id, host_id, routes, hosts):
-		self.sim_id = sim_id
-		self.host_id = host_id,
-		self.routing_table = routes
-		self.hosts = hosts
+		self.sim_id = sim_id #simulation id = unique name of device
+		self.host_id = host_id, #host_id = 
+		self.routing_table = routes #dictionary saying where packets can be routed to/from
+		self.hosts = hosts    #list of all network nodes with what they host
 
 	def onEvent(self, event):
 		return {
@@ -113,7 +113,8 @@ def test():
 	routes = { "NET-1" : "NET-1" , "NET-2" : "NET-2" }
 
 	# Would typically be associated with a host.
-	a = NetworkNode("NET-1", None, routes, hosts)
+	#SETH: why have you not associated these with hosts as in your hosts = {}?
+	a = NetworkNode("NET-1", None, routes, hosts) 
 	b = NetworkNode("NET-2", None, routes, hosts)
 
 	msg_params = {
