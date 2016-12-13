@@ -140,15 +140,19 @@ def test():
 		msg_params
 	)
 
+	#Light 1 tells Net1 to send info
 	after_net_send = a.onEvent(net_event)[0]
 	assert after_net_send.type == events.UDP_SEND
 
+	#Net1 tells Net2 that its sending info
 	after_udp_send = a.onEvent(after_net_send)[0]
 	assert after_udp_send.type == events.UDP_RECEIVE
 
+	#Net 2 gets the event
 	after_udp_receive = b.onEvent(after_udp_send)[0]
 	assert after_udp_receive.type == events.NETWORK_RECEIVE
 
+	#Net 2 tells Light 2 that it should adjust brightness
 	after_net_receive = b.onEvent(after_udp_receive)[0]
 	assert after_net_receive.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT
 
