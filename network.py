@@ -15,6 +15,7 @@ UDP_SEND_DELAY = 100
 UDP_RECEIVE_DELAY = 100
 
 
+
 class NetworkNode(events.SimObject):
 	def __init__(self, sim_id, host_id, routes, hosts):
 		self.sim_id = sim_id #simulation id = unique name of device
