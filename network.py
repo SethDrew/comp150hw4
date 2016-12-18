@@ -33,7 +33,8 @@ class NetworkNode(events.SimObject):
 			events.TCP_RECEIVE : self._tcpReceive,
 			events.ZIGBEE_SEND : self._zigBeeSend,
 			events.ZIGBEE_RECEIVE : self._zigBeeReceive
-		}[event.type](event)
+		}
+		[event.type](event)
 
 	def _networkSend(self, event):
 		proto = event.params["proto"]

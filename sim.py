@@ -3,13 +3,19 @@ import device
 import network
 import cloud
 
+import heapq
 
-
-
-
-
+class EventQueue:
+    def __init__(self):
+        self.events = []
+    def push(self, event):
+        heapq.push(self.events, (event.fire_time, event))
+    def pop(self):
+        return heapq.heappop(self.events)[1]
+    def empty(self):
+        return len(self.events) == 0
 class Simulator:
-    def __init__(self, input_events):
+    def __init__(self):
         routes = { "NET-1" : "NET-1" , "NET-2" : "NET-2" }
         hosts = {
             "LIGHT-1" : "NET-1",
@@ -17,17 +23,23 @@ class Simulator:
             "COORDINATOR" : "NET-1"
         }
         self.objects = {
-            "nn1" : network.NetworkNode("NET-1", "", routes, hosts),
-            "nn2" : network.NetworkNode("NET-2", "", routes, hosts),
-            "c" : cloud.Cloud(),
-            "d1" : device.Device("LIGHT_1"),
-            "d2" : device.Device("LIGHT_2"),
-            "event_queue" : input_events
+            "NET-1" : network.NetworkNode("NET-1", "", routes, hosts),
+            "NET-2" : network.NetworkNode("NET-2", "", routes, hosts),
+            "cloud" : cloud.Cloud(),
+            "LIGHT_1" : device.Device("LIGHT_1"),
+            "LIGHT_2" : device.Device("LIGHT_2"),
         }
     def run(self):
+        eventq = EventQueue()
         m = events.Event(events.MOTION_EVENT, 
                   0, "LIGHT_1", "LIGHT_1", {"light_id" : "LIGHT_1"})
-        print self.objects["d1"].onEvent(m)
+        eventq.push(m)
+        while not eventq.empty():
+            event = eventq.pop()
+            new_events = self.objects[event.dest].onEvent(event)
+            for event in new_events:
+                eventq.push(event)
+            
 
 
 
