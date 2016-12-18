@@ -4,7 +4,7 @@
 # Updated by Ashton Knight on 12/11/2016
 #
 # Implementation of device object
-
+import events
 LOAD = 60 #standard lightbulb operates at 60 Watts
 STANDBY_USAGE = 1 #each bulb uses approx. 1W to run connectivity hardware
 LPW = 14 #lumens per watt of incandescant lightbulb
@@ -15,7 +15,7 @@ TO_NET_DELAY = 5
 INTERNAL_DELAY = 6 
 
 class Device:
-	def __init__(self, id, default_brightness=0.50)
+	def __init__(self, id, default_brightness=.50):
 		self.id = id
 		self.default_brightness = default_brightness
 		self.brightness = default_brightness
@@ -23,28 +23,28 @@ class Device:
 		self.last_modified = 0
 
 	def onEvent(self, event):
-		if event.params.light_id = self.id:
-			if event.type == MOTION_EVENT:
-				brightness_control = Event(
+		if event.params["light_id"] == self.id:
+			if event.type == events.MOTION_EVENT:
+				brightness_control = events.Event(
 					event.fire_time + INTERNAL_DELAY,
-					BRIGHTNESS_CONTROL_EVENT,
-					"device",
-					"device")
+					events.BRIGHTNESS_CONTROL_EVENT,
+					self.id,
+					self.id)
 				brightness_control.params = {
 					"light_brightness" : self.default_brightness,
 					"light_id" : self.id
 				}
 
-				log_motion = Event(
+				log_motion = events.Event(
 					event.fire_time + TO_NET_DELAY,
-					LOG_MOTION_EVENT,
-					"device",
+					events.LOG_MOTION_EVENT,
+					self.id,
 					"network")
 				log_motion.params = {}
 
 				return [brightness_control, log_motion]
 
-			if event.type == BRIGHTNESS_CONTROL_EVENT:
+			if event.type == events.BRIGHTNESS_CONTROL_EVENT:
 				# udate power consumed using Riemann sum
 				## Power conversion equation:
 				###     --->      |              elapsed time (hours)               |           power usage of device mode (kW)            |      
@@ -54,16 +54,16 @@ class Device:
 
 				return []
 
-			if event.type == GENERATE_DEFAULT_BRIGHTNESS_EVENT:
-				default_brightness_event = Event(
+			if event.type == events.GENERATE_DEFAULT_BRIGHTNESS_EVENT:
+				events.default_brightness_event = events.Event(
 					event.fire_time + TO_NET_DELAY,
-					GENERATE_DEFAULT_BRIGHTNESS_EVENT,
-					"device",
+					events.GENERATE_DEFAULT_BRIGHTNESS_EVENT,
+					self.id,
 					"network")
 
-				return [default_brightness_event]
+				return [events.default_brightness_event]
 
-			if event.type == UPDATE_DEFAULT_BRIGHTNESS_EVENT:
+			if event.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT:
 				self.default_brightness = event.params.light_brightness
 
 				return []
