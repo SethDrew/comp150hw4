@@ -9,7 +9,7 @@ class SimObject:
     def onEvent(self, event): 
         # Generate side effects (event list) to return to the simulator
         raise NotImplementedError("onEvent function must be subclassed")
-    def power():
+    def power(self):
         #return total power in watts used in simulation
         return self._power
 
