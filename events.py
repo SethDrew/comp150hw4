@@ -84,23 +84,6 @@ OnEvent function:
             - Send message to Network
 """
 
-GENERATE_UPDATE_DEFAULT_BRIGHTNESS_EVENT = 3
-"""
-OnEvent function:
-    What events should happen?
-
-    Lightbulb: 
-        Note that this lightbulb MUST be the coordinator
-            New Event: UPDATE_BRIGHTNESS_CONTROL_EVENT to network
-
-    Network:   
-        New Event: GENERATE_UPDATE_DEFAULT_BRIGHTNESS_EVENT
-            - Send message to Lightbulb Coordinator
-
-    Cloud: 
-        New Event: BRIGHTNESS_CONTROL_EVENT
-            - Send message to Network
-"""
 
 UPDATE_DEFAULT_BRIGHTNESS_EVENT = 4
 """
