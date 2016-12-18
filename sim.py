@@ -43,7 +43,7 @@ class Simulator:
         #           0, "LIGHT-1", "LIGHT-1", {"light_id" : "LIGHT-1"})
         user_control_event = events.Event(events.BRIGHTNESS_CONTROL_EVENT, 
                         0, "cloud", "LIGHT-1", {"light_id" : "LIGHT-1", "light_brightness" : .7})
-        eventq.push(m)
+        eventq.push(user_control_event)
         while not eventq.empty():
             event = eventq.pop()
             print "{}.onEvent({})".format(event.dest, event._event_to_string[event.type])
