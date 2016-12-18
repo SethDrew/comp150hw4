@@ -14,13 +14,16 @@ class EventQueue:
         return heapq.heappop(self.events)[1]
     def empty(self):
         return len(self.events) == 0
+    def string(self):
+        return ""
 class Simulator:
     def __init__(self):
-        self.routes = { "NET-1" : "NET-1" , "NET-2" : "NET-2" }
-        self.hosts = {
+        routes = { "NET-1" : "NET-1" , "NET-2" : "NET-2" }
+        hosts = {
             "LIGHT-1" : "NET-1",
             "LIGHT-2" : "NET-2",
-            "COORDINATOR" : "NET-1"
+            "COORDINATOR" : "NET-1",
+            "cloud"  : "NET-2"
         }
         self.objects = {
             "NET-1" : network.NetworkNode("NET-1", "", routes, hosts),
@@ -39,7 +42,7 @@ class Simulator:
             print "Running event on {}".format(event.dest)
             print event
             new_events = self.objects[event.dest].onEvent(event)
-            print "Got new events:"
+            print "Got resulting events:"
             print new_events
             for event in new_events:
                 eventq.push(event)

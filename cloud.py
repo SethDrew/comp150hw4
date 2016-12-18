@@ -1,17 +1,18 @@
 import events
 
 class Cloud(events.SimObject):
-    def __init__(self):
+    def __init__(self, node):
+        self.node = node
         self.log = []
 
     def onEvent(self, event):
-        log.append(event)
+        self.log.append(event)
 
         if event.type == MOTION_EVENT:
             return []
 
         if event.type == LOG_MOTION_EVENT:
-            return []
+            return 
 
         if event.type == BRIGHTNESS_CONTROL_EVENT:
             new_event = Event(event.fire_time, BRIGHTNESS_CONTROL_EVENT, "cloud", "network")
