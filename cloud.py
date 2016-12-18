@@ -1,4 +1,5 @@
 import events
+CLOUD_DELAY = 10
 
 class Cloud(events.SimObject):
     def __init__(self, node):
@@ -10,7 +11,29 @@ class Cloud(events.SimObject):
 
 
         if event.type == LOG_MOTION_EVENT:
-            return []
+            brightness_control = events.Event(
+                events.BRIGHTNESS_CONTROL_EVENT,
+                event.fire_time + CLOUD_DELAY,
+                "cloud",
+                event.source)
+            brightness_control.params = {
+                "light_brightness" : 0.7,
+                "light_id" : event.source
+            }
+
+            new_network_send = events.Event(
+                events.NETWORK_SEND,
+                event.fire_time + INTERNAL_DELAY,
+                self.id,
+                self.node)
+            new_network_send.params = {
+                "src" : "cloud",
+                "dest" : event.params["src"],
+                "payload" : brightness_control,
+                "proto" : events.UDP_SEND
+            }
+
+            return [new_network_send]
 
         if event.type == BRIGHTNESS_CONTROL_EVENT:
            
