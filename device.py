@@ -23,6 +23,7 @@ class Device(events.SimObject):
 		self.brightness = default_brightness
 		self.power_consumed = 0
 		self.last_modified = 0
+		self.node = node
 
 	def onEvent(self, event):
 		if event.params["light_id"] == self.id:
