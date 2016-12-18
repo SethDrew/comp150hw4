@@ -18,25 +18,29 @@ class EventQueue:
         return ""
 class Simulator:
     def __init__(self):
+
+        #not really sure why we need routes pointing towards themselves
         routes = { "NET-1" : "NET-1" , "NET-2" : "NET-2", "NET-3" :"NET-3" }
+
+        #Each object has a unique network node associated with it. 
+        #We are assuming only one hop is neccessary for now
         hosts = {
             "LIGHT-1" : "NET-1",
             "LIGHT-2" : "NET-2",
             "cloud"   : "NET-3",
-            "COORDINATOR" : "NET-1",
         }
         self.objects = {
             "NET-1" : network.NetworkNode("NET-1", routes, hosts, host_id="LIGHT-1"),
             "NET-2" : network.NetworkNode("NET-2", routes, hosts, host_id="LIGHT-2"),
             "NET-3" : network.NetworkNode("NET-3", routes, hosts, host_id="cloud"),
             "cloud" : cloud.Cloud("NET-3"),
-            "LIGHT_1" : device.Device("LIGHT_1", "NET-1"),
-            "LIGHT_2" : device.Device("LIGHT_2", "NET-2"),
+            "LIGHT-1" : device.Device("LIGHT-1", "NET-1"),
+            "LIGHT-2" : device.Device("LIGHT-2", "NET-2"),
         }
     def run(self):
         eventq = EventQueue()
         m = events.Event(events.MOTION_EVENT, 
-                  0, "LIGHT_1", "LIGHT_1", {"light_id" : "LIGHT_1"})
+                  0, "LIGHT-1", "LIGHT-1", {"light_id" : "LIGHT-1"})
         eventq.push(m)
         while not eventq.empty():
             event = eventq.pop()
