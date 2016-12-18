@@ -4,7 +4,30 @@
 # 
 # Implementation of Event class, as well as definitions for event constants.
 
+class SimObject:
+    _power = 0
+    def onEvent(self, event): 
+        # Generate side effects (event list) to return to the simulator
+        raise NotImplementedError("onEvent function must be subclassed")
+    def power():
+        #return total power in watts used in simulation
+        return self._power
+
 class Event:
+    _event_to_string = {0:"MOTION_EVENT",
+                        1:"LOG_MOTION_EVENT",
+                        2:"BRIGHTNESS_CONTROL_EVENT",
+                        3:"GENERATE_UPDATE_DEFAULT_BRIGHTNESS_EVENT",
+                        4:"UPDATE_DEFAULT_BRIGHTNESS_EVENT",
+                        8:"NETWORK_SEND" ,
+                        9:"NETWORK_RECEIVE",
+                        90:"UDP_SEND",
+                        91:"UDP_RECEIVE",
+                        92:"TCP_SEND",
+                        93:"TCP_RECEIVE",
+                        94:"ZIGBEE_SEND",
+                        95:"ZIGBEE_RECEIVE"}
+
     def __init__(self, event_type, fire_time, source, dest, params={}):
         self.type = event_type
         self.fire_time = fire_time
@@ -13,6 +36,15 @@ class Event:
         self.dest = dest
 
         self.params = params
+    def full_string():
+        return "Event: {} at {} from {} to {} with params:\n{}".format(self._event_to_string[self.type], self.fire_time, self.source, self.dest, self.params)
+    def __repr__(self):
+        try:
+            self._event_to_string[self.type]
+        except:
+            print "Could not recognize {}".format(self.type)
+            return ""
+        return "Event: {} at {} from {} to {}".format(self._event_to_string[self.type], self.fire_time, self.source, self.dest)
 
 
 ##################    EVENT CONSTANTS    ##################

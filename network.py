@@ -14,12 +14,8 @@ FROM_NET_DELAY = 5
 UDP_SEND_DELAY = 100
 UDP_RECEIVE_DELAY = 100
 
-class SimObject:
-	def onEvent(self, event): 
-		# Generate side effects (event list) to return to the simulator
-		raise NotImplementedError("onEvent function must be subclassed")
 
-class NetworkNode(SimObject):
+class NetworkNode(events.SimObject):
 	def __init__(self, sim_id, host_id, routes, hosts):
 		self.sim_id = sim_id #simulation id = unique name of device
 		self.host_id = host_id, #host_id = 

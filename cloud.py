@@ -1,4 +1,6 @@
-class Cloud(SimObject):
+import events
+
+class Cloud(events.SimObject):
     def __init__(self):
         self.log = []
 
@@ -29,3 +31,6 @@ class Cloud(SimObject):
 
         if event.type == UPDATE_DEFAULT_BRIGHTNESS_EVENT:
             return []
+
+    def power():
+        return self.power #defined in sim_object. you should find out how much power the cloud might take on every operation

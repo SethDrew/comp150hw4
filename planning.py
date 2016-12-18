@@ -116,6 +116,8 @@ class SimObject:
         #do something based on event
         #generate side effects (event list) to return to the simulator
         return [] #should be list of events
+    def power():
+        return []
 
 
 class Simulator:
