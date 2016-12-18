@@ -54,7 +54,7 @@ class Device(events.SimObject):
 					"proto": events.UDP_SEND,
 					"src" : self.id,
 					"dest" : "cloud",
-					"payload" : brightness_control
+					"payload" : log_motion
 				}
 
 				return [new_network_send, brightness_control]
