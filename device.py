@@ -62,7 +62,7 @@ class Device(events.SimObject):
 			if event.type == events.BRIGHTNESS_CONTROL_EVENT:
 				# udate power consumed using Riemann sum
 				## Power conversion equation:
-				###     --->      |              elapsed time (hours)               |           power usage of device mode (kW)            |      
+				###     --->      |              elapsed time (hours)                  |           power usage of device mode (kW)              |      
 				self._power += (event.fire_time-self.last_modified)/1000000.0/60.0/60.0*((MAX_LUMENS*self.brightness)/LPW + STANDBY_USAGE)/1000.0
 				self.last_modified = event.fire_time # update last modified time
 				self.brightness = event.params["light_brightness"]

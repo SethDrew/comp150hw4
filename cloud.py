@@ -16,10 +16,24 @@ class Cloud(events.SimObject):
                 events.BRIGHTNESS_CONTROL_EVENT,
                 event.fire_time + CLOUD_DELAY,
                 "cloud",
-                event.source)
+                "cloud")
             brightness_control.params = {
                 "light_brightness" : 0.7,
                 "light_id" : event.source
+            }
+
+            return [brightness_control]
+
+        if event.type == events.BRIGHTNESS_CONTROL_EVENT:
+           
+            brightness_control = events.Event(
+                events.BRIGHTNESS_CONTROL_EVENT,
+                event.fire_time + CLOUD_DELAY,
+                "cloud",
+                event.params["light_id"])
+            brightness_control.params = {
+                "light_brightness" : event.params["light_brightness"],
+                "light_id" : event.params["light_id"]
             }
 
             new_network_send = events.Event(
@@ -29,16 +43,12 @@ class Cloud(events.SimObject):
                 self.node)
             new_network_send.params = {
                 "src" : "cloud",
-                "dest" : event.source,
+                "dest" : event.params["light_id"],
                 "payload" : brightness_control,
                 "proto" : events.UDP_SEND
             }
 
             return [new_network_send]
-
-        if event.type == events.BRIGHTNESS_CONTROL_EVENT:
-           
-            return []
 
 
         if event.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT:
