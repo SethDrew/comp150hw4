@@ -50,6 +50,9 @@ class Simulator:
             print new_events
             for event in new_events:
                 eventq.push(event)
+
+        for o in objects:
+            print o.power()
             
 
 
