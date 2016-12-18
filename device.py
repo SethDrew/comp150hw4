@@ -19,6 +19,7 @@ INTERNAL_DELAY = 6
 class Device(events.SimObject):
 	def __init__(self, id, node, default_brightness=.50):
 		self.id = id
+		self.node = node
 		self.default_brightness = default_brightness
 		self.brightness = default_brightness
 		self.power_consumed = 0
@@ -55,7 +56,7 @@ class Device(events.SimObject):
 					"payload" : brightness_control
 				}
 
-				return [new_network_send, log_motion]
+				return [new_network_send, brightness_control]
 
 			if event.type == events.BRIGHTNESS_CONTROL_EVENT:
 				# udate power consumed using Riemann sum
