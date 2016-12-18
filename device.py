@@ -5,6 +5,8 @@
 #
 # Implementation of device object
 import events
+
+
 LOAD = 60 #standard lightbulb operates at 60 Watts
 STANDBY_USAGE = 1 #each bulb uses approx. 1W to run connectivity hardware
 LPW = 14 #lumens per watt of incandescant lightbulb

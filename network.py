@@ -15,6 +15,7 @@ UDP_SEND_DELAY = 100
 UDP_RECEIVE_DELAY = 100
 
 
+
 class NetworkNode(events.SimObject):
 	def __init__(self, sim_id, host_id, routes, hosts):
 		self.sim_id = sim_id #simulation id = unique name of device
@@ -33,7 +34,8 @@ class NetworkNode(events.SimObject):
 			events.TCP_RECEIVE : self._tcpReceive,
 			events.ZIGBEE_SEND : self._zigBeeSend,
 			events.ZIGBEE_RECEIVE : self._zigBeeReceive
-		}[event.type](event)
+		}
+		[event.type](event)
 
 	def _networkSend(self, event):
 		proto = event.params["proto"]
