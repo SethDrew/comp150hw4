@@ -1,5 +1,6 @@
 import events
 CLOUD_DELAY = 10
+INTERNAL_DELAY = 10
 
 class Cloud(events.SimObject):
     def __init__(self, node):
@@ -24,11 +25,11 @@ class Cloud(events.SimObject):
             new_network_send = events.Event(
                 events.NETWORK_SEND,
                 event.fire_time + INTERNAL_DELAY,
-                self.id,
+                "cloud",
                 self.node)
             new_network_send.params = {
                 "src" : "cloud",
-                "dest" : event.params["src"],
+                "dest" : event.source,
                 "payload" : brightness_control,
                 "proto" : events.UDP_SEND
             }

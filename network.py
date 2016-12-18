@@ -60,7 +60,10 @@ class NetworkNode(events.SimObject):
 		return [received_event]
 
 	def _udpSend(self, event):
+		print event.params["dest"]
+		print self.hosts[event.params["dest"]]
 		next_hop = self.routing_table[self.hosts[event.params["dest"]]]
+
 		return [events.Event(
 			events.UDP_RECEIVE,
 			event.fire_time,
