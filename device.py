@@ -16,7 +16,7 @@ MAX_LUMENS = 800 #typical maximum brightness of household lightbulb
 TO_NET_DELAY = 5
 INTERNAL_DELAY = 6 
 
-class Device:
+class Device(events.SimObject):
 	def __init__(self, id, default_brightness=.50):
 		self.id = id
 		self.default_brightness = default_brightness
@@ -28,8 +28,8 @@ class Device:
 		if event.params["light_id"] == self.id:
 			if event.type == events.MOTION_EVENT:
 				brightness_control = events.Event(
-					event.fire_time + INTERNAL_DELAY,
 					events.BRIGHTNESS_CONTROL_EVENT,
+					event.fire_time + INTERNAL_DELAY,
 					self.id,
 					self.id)
 				brightness_control.params = {
@@ -38,13 +38,24 @@ class Device:
 				}
 
 				log_motion = events.Event(
-					event.fire_time + TO_NET_DELAY,
 					events.LOG_MOTION_EVENT,
+					event.fire_time + INTERNAL_DELAY,
 					self.id,
 					"network")
 				log_motion.params = {}
 
-				return [brightness_control, log_motion]
+				new_network_send = events.Event(
+					events.NETWORK_SEND,
+					event.fire_time + INTERNAL_DELAY,
+					self.id,
+					"cloud")
+				new_network_send.params = {
+					"src" : self.id,
+					"dest" : "cloud",
+					"payload" : brightness_control
+				}
+
+				return [new_network_send, log_motion]
 
 			if event.type == events.BRIGHTNESS_CONTROL_EVENT:
 				# udate power consumed using Riemann sum
@@ -57,13 +68,13 @@ class Device:
 				return []
 
 			if event.type == events.GENERATE_DEFAULT_BRIGHTNESS_EVENT:
-				events.default_brightness_event = events.Event(
-					event.fire_time + TO_NET_DELAY,
+				new_default_brightness_event = events.Event(
 					events.GENERATE_DEFAULT_BRIGHTNESS_EVENT,
+					event.fire_time + TO_NET_DELAY,
 					self.id,
 					"network")
 
-				return [events.default_brightness_event]
+				return [new_default_brightness_event]
 
 			if event.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT:
 				self.default_brightness = event.params.light_brightness
