@@ -39,8 +39,10 @@ class Simulator:
         }
     def run(self):
         eventq = EventQueue()
-        m = events.Event(events.MOTION_EVENT, 
-                  0, "LIGHT-1", "LIGHT-1", {"light_id" : "LIGHT-1"})
+        # m = events.Event(events.MOTION_EVENT, 
+        #           0, "LIGHT-1", "LIGHT-1", {"light_id" : "LIGHT-1"})
+        user_control_event = events.Event(events.BRIGHTNESS_CONTROL_EVENT, 
+                        0, "cloud", "LIGHT-1", {"light_id" : "LIGHT-1", "light_brightness" : .7})
         eventq.push(m)
         while not eventq.empty():
             event = eventq.pop()
