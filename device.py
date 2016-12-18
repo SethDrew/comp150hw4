@@ -15,7 +15,7 @@ TO_NET_DELAY = 5
 INTERNAL_DELAY = 6 
 
 class Device(events.SimObject):
-	def __init__(self, id, default_brightness=.50):
+	def __init__(self, id, node, default_brightness=.50):
 		self.id = id
 		self.default_brightness = default_brightness
 		self.brightness = default_brightness
@@ -39,14 +39,14 @@ class Device(events.SimObject):
 					events.LOG_MOTION_EVENT,
 					event.fire_time + INTERNAL_DELAY,
 					self.id,
-					"network")
+					"cloud")
 				log_motion.params = {}
 
 				new_network_send = events.Event(
 					events.NETWORK_SEND,
 					event.fire_time + INTERNAL_DELAY,
 					self.id,
-					"cloud")
+					self.node)
 				new_network_send.params = {
 					"src" : self.id,
 					"dest" : "cloud",
