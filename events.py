@@ -36,6 +36,7 @@ class Event:
         self.dest = dest
 
         self.params = params
+
     def full_string():
         return "Event: {} at {} from {} to {} with params:\n{}".format(self._event_to_string[self.type], self.fire_time, self.source, self.dest, self.params)
     def __repr__(self):
