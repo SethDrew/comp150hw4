@@ -17,9 +17,9 @@ UDP_RECEIVE_DELAY = 100
 
 
 class NetworkNode(events.SimObject):
-	def __init__(self, sim_id, host_id, routes, hosts):
+	def __init__(self, sim_id, routes, hosts, host_id):
 		self.sim_id = sim_id #simulation id = unique name of device
-		self.host_id = host_id, #host_id = 
+		self.host_id = host_id
 		self.routing_table = routes #dictionary saying where packets can be routed to/from
 		self.hosts = hosts    #list of all network nodes with what they host
 
@@ -34,8 +34,7 @@ class NetworkNode(events.SimObject):
 			events.TCP_RECEIVE : self._tcpReceive,
 			events.ZIGBEE_SEND : self._zigBeeSend,
 			events.ZIGBEE_RECEIVE : self._zigBeeReceive
-		}
-		[event.type](event)
+		}[event.type](event)
 
 	def _networkSend(self, event):
 		proto = event.params["proto"]
@@ -51,11 +50,11 @@ class NetworkNode(events.SimObject):
 				"payload" : event.params["payload"]
 			}
 		)
-
 		return [send_event]
 
 	def _networkReceive(self, event):
 		received_event = event.params["payload"]
+		print received_event
 
 		received_event.fire_time = event.fire_time + FROM_NET_DELAY
 
@@ -63,7 +62,6 @@ class NetworkNode(events.SimObject):
 
 	def _udpSend(self, event):
 		next_hop = self.routing_table[self.hosts[event.params["dest"]]]
-
 		return [events.Event(
 			events.UDP_RECEIVE,
 			event.fire_time,
@@ -74,6 +72,7 @@ class NetworkNode(events.SimObject):
 
 	def _udpReceive(self, event):
 		if self.hosts[event.params["dest"]] == self.sim_id:
+			print self.host_id
 			return [events.Event(
 				events.NETWORK_RECEIVE,
 				event.fire_time + UDP_RECEIVE_DELAY,

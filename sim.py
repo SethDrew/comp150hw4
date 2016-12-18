@@ -18,17 +18,18 @@ class EventQueue:
         return ""
 class Simulator:
     def __init__(self):
-        routes = { "NET-1" : "NET-1" , "NET-2" : "NET-2" }
+        routes = { "NET-1" : "NET-1" , "NET-2" : "NET-2", "NET-3" :"NET-3" }
         hosts = {
             "LIGHT-1" : "NET-1",
             "LIGHT-2" : "NET-2",
+            "cloud"   : "NET-3",
             "COORDINATOR" : "NET-1",
-            "cloud"  : "NET-2"
         }
         self.objects = {
-            "NET-1" : network.NetworkNode("NET-1", "", routes, hosts),
-            "NET-2" : network.NetworkNode("NET-2", "", routes, hosts),
-            "cloud" : cloud.Cloud(),
+            "NET-1" : network.NetworkNode("NET-1", routes, hosts, host_id="LIGHT-1"),
+            "NET-2" : network.NetworkNode("NET-2", routes, hosts, host_id="LIGHT-2"),
+            "NET-3" : network.NetworkNode("NET-3", routes, hosts, host_id="cloud"),
+            "cloud" : cloud.Cloud("NET-3"),
             "LIGHT_1" : device.Device("LIGHT_1", "NET-1"),
             "LIGHT_2" : device.Device("LIGHT_2", "NET-2"),
         }
@@ -39,8 +40,8 @@ class Simulator:
         eventq.push(m)
         while not eventq.empty():
             event = eventq.pop()
-            print "Running event on {}".format(event.dest)
-            print event
+            print "{}.onEvent({})".format(event.dest, event._event_to_string[event.type])
+            print event.dest
             new_events = self.objects[event.dest].onEvent(event)
             print "Got resulting events:"
             print new_events

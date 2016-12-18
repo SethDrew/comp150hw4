@@ -22,7 +22,6 @@ class Device(events.SimObject):
 		self.node = node
 		self.default_brightness = default_brightness
 		self.brightness = default_brightness
-		self.power_consumed = 0
 		self.last_modified = 0
 		self.node = node
 
@@ -52,6 +51,7 @@ class Device(events.SimObject):
 					self.id,
 					self.node)
 				new_network_send.params = {
+					"proto": events.UDP_SEND,
 					"src" : self.id,
 					"dest" : "cloud",
 					"payload" : brightness_control
@@ -63,9 +63,9 @@ class Device(events.SimObject):
 				# udate power consumed using Riemann sum
 				## Power conversion equation:
 				###     --->      |              elapsed time (hours)               |           power usage of device mode (kW)            |      
-				power_consumed += (event.fire_time-self.last_modified)/1000000/60/60*((MAX_LUMENS*self.brightness)/LPW + STANDBY_USAGE)/1000
+				self._power += (event.fire_time-self.last_modified)/1000000/60/60*((MAX_LUMENS*self.brightness)/LPW + STANDBY_USAGE)/1000
 				self.last_modified = event.fire_time # update last modified time
-				self.brightness = event.params.light_brightness
+				self.brightness = event.params["light_brightness"]
 
 				return []
 
@@ -79,7 +79,7 @@ class Device(events.SimObject):
 				return [new_default_brightness_event]
 
 			if event.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT:
-				self.default_brightness = event.params.light_brightness
+				self.default_brightness = event.params["light_brightness"]
 
 				return []
 
