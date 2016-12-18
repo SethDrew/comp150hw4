@@ -10,7 +10,7 @@ class Cloud(events.SimObject):
         self.log.append(event)
 
 
-        if event.type == LOG_MOTION_EVENT:
+        if event.type == events.LOG_MOTION_EVENT:
             brightness_control = events.Event(
                 events.BRIGHTNESS_CONTROL_EVENT,
                 event.fire_time + CLOUD_DELAY,
@@ -35,12 +35,12 @@ class Cloud(events.SimObject):
 
             return [new_network_send]
 
-        if event.type == BRIGHTNESS_CONTROL_EVENT:
+        if event.type == events.BRIGHTNESS_CONTROL_EVENT:
            
             return []
 
 
-        if event.type == UPDATE_DEFAULT_BRIGHTNESS_EVENT:
+        if event.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT:
             return []
 
     def power():
