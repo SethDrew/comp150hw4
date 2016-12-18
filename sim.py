@@ -41,7 +41,6 @@ class Simulator:
         while not eventq.empty():
             event = eventq.pop()
             print "{}.onEvent({})".format(event.dest, event._event_to_string[event.type])
-            print event.dest
             new_events = self.objects[event.dest].onEvent(event)
             print "Got resulting events:"
             print new_events

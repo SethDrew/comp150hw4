@@ -54,7 +54,6 @@ class NetworkNode(events.SimObject):
 
 	def _networkReceive(self, event):
 		received_event = event.params["payload"]
-		print received_event
 
 		received_event.fire_time = event.fire_time + FROM_NET_DELAY
 
@@ -72,12 +71,11 @@ class NetworkNode(events.SimObject):
 
 	def _udpReceive(self, event):
 		if self.hosts[event.params["dest"]] == self.sim_id:
-			print self.host_id
 			return [events.Event(
 				events.NETWORK_RECEIVE,
 				event.fire_time + UDP_RECEIVE_DELAY,
 				self.sim_id,
-				self.host_id,
+				self.sim_id,
 				params = event.params
 			)]
 
