@@ -9,7 +9,7 @@
         "parameters": {
             "network-node": "NET-1", 
             "load-wattage": 60, 
-            "initial_power_level": 0.8575822601472987, 
+            "initial_power_level": 0, 
             "system-wattage": 0.01
         }
     }, 
@@ -23,7 +23,7 @@
         "parameters": {
             "network-node": "NET-2", 
             "load-wattage": 60, 
-            "initial_power_level": 0.06505003587620839, 
+            "initial_power_level": 0, 
             "system-wattage": 0.01
         }
     }, 
@@ -37,7 +37,7 @@
         "parameters": {
             "network-node": "NET-3", 
             "load-wattage": 60, 
-            "initial_power_level": 0.5600369156207701, 
+            "initial_power_level": 0, 
             "system-wattage": 0.01
         }
     }, 
@@ -51,7 +51,7 @@
         "parameters": {
             "network-node": "NET-4", 
             "load-wattage": 60, 
-            "initial_power_level": 0.20933178377625306, 
+            "initial_power_level": 0, 
             "system-wattage": 0.01
         }
     }, 
@@ -65,7 +65,7 @@
         "parameters": {
             "network-node": "NET-5", 
             "load-wattage": 60, 
-            "initial_power_level": 0.7179342730329121, 
+            "initial_power_level": 0, 
             "system-wattage": 0.01
         }
     }, 

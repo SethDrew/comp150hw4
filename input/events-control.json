@@ -1,0 +1,362 @@
+[
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-1", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-1"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-1", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-1"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-1", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-1"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-1", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-1"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-2", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-2"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-2", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-2"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-2", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-2"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-2", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-2"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-3", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-3"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-3", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-3"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-3", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-3"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-3", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-3"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-4", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-4"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-4", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-4"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-4", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-4"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-4", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-4"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-5", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-5"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-5", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-5"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-5", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-5"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-5", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-5"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-6", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-6"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-6", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-6"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-6", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-6"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-6", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-6"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-7", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-7"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-7", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-7"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-7", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-7"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-7", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-7"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-8", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-8"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-8", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-8"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-8", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-8"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-8", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-8"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-9", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-9"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-9", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-9"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-9", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-9"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-9", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-9"
+    }, 
+    {
+        "fire_time": 25200000000, 
+        "destination": "LIGHT-10", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-10"
+    }, 
+    {
+        "fire_time": 32400000000, 
+        "destination": "LIGHT-10", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-10"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "LIGHT-10", 
+        "payload": {
+            "brightness": 1
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-10"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "LIGHT-10", 
+        "payload": {
+            "brightness": 0
+        }, 
+        "event_type": 2, 
+        "source": "LIGHT-10"
+    }
+]

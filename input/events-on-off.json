@@ -1,7 +1,7 @@
 [
     {
         "fire_time": 0, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 0, 
             "device_id": "LIGHT-1"
@@ -11,7 +11,7 @@
     }, 
     {
         "fire_time": 1000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 1, 
             "device_id": "LIGHT-1"
@@ -21,7 +21,7 @@
     }, 
     {
         "fire_time": 2000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 0, 
             "device_id": "LIGHT-1"
@@ -31,7 +31,7 @@
     }, 
     {
         "fire_time": 3000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 1, 
             "device_id": "LIGHT-1"
@@ -41,7 +41,7 @@
     }, 
     {
         "fire_time": 4000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 0, 
             "device_id": "LIGHT-1"
@@ -51,7 +51,7 @@
     }, 
     {
         "fire_time": 5000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 1, 
             "device_id": "LIGHT-1"
@@ -61,7 +61,7 @@
     }, 
     {
         "fire_time": 6000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 0, 
             "device_id": "LIGHT-1"
@@ -71,7 +71,7 @@
     }, 
     {
         "fire_time": 7000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 1, 
             "device_id": "LIGHT-1"
@@ -81,7 +81,7 @@
     }, 
     {
         "fire_time": 8000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 0, 
             "device_id": "LIGHT-1"
@@ -91,7 +91,7 @@
     }, 
     {
         "fire_time": 9000000, 
-        "destination": "NETWORK", 
+        "destination": "NET-1", 
         "payload": {
             "brightness": 1, 
             "device_id": "LIGHT-1"

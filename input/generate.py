@@ -11,7 +11,7 @@ if(sys.argv[1] == "simple"):
                 events.append({"fire_time": i*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
                                "source": "CLOUD",
-                               "destination": "NETWORK",
+                               "destination": "NET-1",
                                "payload": {"device_id": "LIGHT-1",
                                            "brightness": i%2}
                                })
@@ -24,12 +24,13 @@ if(sys.argv[1] == "simple"):
                         "name": "LIGHT-1",
                         "parameters": { "initial_power_level": 1,
                                         "load-wattage": 60,
-                                        "system-wattage": 0.01}
+                                        "system-wattage": 0.01,
+                                        "network-node": "NET-1"}
                      },
                      { "type": "cloud",
                        "name": "CLOUD"},
                      { "type": "network",
-                       "name": "NETWORK"}
+                       "name": "NET-1"}
                      ]
                      
         text_file = open("components-on-off.json", "w")
@@ -44,7 +45,7 @@ if(sys.argv[1] == "random"):
                 events.append({"fire_time": random.randint(1, 3600*MICROSECONDS_IN_SECOND),
                                "event_type": 2,
                                "source": "CLOUD",
-                               "destination": "NETWORK",
+                               "destination": "NET-1",
                                "payload": {"device_id": "LIGHT-"+str(random.randint(1,5)),
                                            "brightness": random.random()}
                                })
@@ -56,8 +57,6 @@ if(sys.argv[1] == "random"):
         components = [
                      { "type": "cloud",
                        "name": "CLOUD"},
-                     { "type": "network",
-                       "name": "NETWORK"}
                      ]
                      
         for i in range(0,5):
@@ -65,9 +64,63 @@ if(sys.argv[1] == "random"):
                         "name": "LIGHT-"+str(i+1),
                         "parameters": { "initial_power_level": random.random(),
                                         "load-wattage": 60,
-                                        "system-wattage": 0.01}
+                                        "system-wattage": 0.01,
+                                        "network-node": "NET-"+str(i+1)}
                      })
+                components.append({ "type": "network", "name": "NET-"+str(i+1)})
                      
         text_file = open("components-random.json", "w")
+        text_file.write(json.dumps(components,indent=4))
+        text_file.close()
+        
+# Control sequence
+if(sys.argv[1] == "control"):
+        events = []
+        
+        for i in range(0,int(sys.argv[2])):
+                events.append({"fire_time": 7*3600*MICROSECONDS_IN_SECOND,
+                               "event_type": 2,
+                               "source": "LIGHT-"+str(i+1),
+                               "destination": "LIGHT-"+str(i+1),
+                               "payload": {"brightness": 1}})
+        
+                events.append({"fire_time": 9*3600*MICROSECONDS_IN_SECOND,
+                               "event_type": 2,
+                               "source": "LIGHT-"+str(i+1),
+                               "destination": "LIGHT-"+str(i+1),
+                               "payload": {"brightness": 0}})
+                               
+                events.append({"fire_time": 18*3600*MICROSECONDS_IN_SECOND,
+                               "event_type": 2,
+                               "source": "LIGHT-"+str(i+1),
+                               "destination": "LIGHT-"+str(i+1),
+                               "payload": {"brightness": 1}})
+                
+                events.append({"fire_time": 23*3600*MICROSECONDS_IN_SECOND,
+                               "event_type": 2,
+                               "source": "LIGHT-"+str(i+1),
+                               "destination": "LIGHT-"+str(i+1),
+                               "payload": {"brightness": 0}})
+        
+        text_file = open("events-control.json", "w")
+        text_file.write(json.dumps(events,indent=4))
+        text_file.close()
+        
+        components = [
+                     { "type": "cloud",
+                       "name": "CLOUD"}
+                     ]            
+                     
+        for i in range(0,5):
+                components.append({ "type": 'device',
+                        "name": "LIGHT-"+str(i+1),
+                        "parameters": { "initial_power_level": 0,
+                                        "load-wattage": 60,
+                                        "system-wattage": 0.01,
+                                        "network-node": "NET-"+str(i+1)}
+                     })
+                components.append({ "type": "network", "name": "NET-"+str(i+1)})
+                     
+        text_file = open("components-control.json", "w")
         text_file.write(json.dumps(components,indent=4))
         text_file.close()

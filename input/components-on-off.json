@@ -3,6 +3,7 @@
         "type": "device", 
         "name": "LIGHT-1", 
         "parameters": {
+            "network-node": "NET-1", 
             "load-wattage": 60, 
             "initial_power_level": 1, 
             "system-wattage": 0.01
@@ -14,6 +15,6 @@
     }, 
     {
         "type": "network", 
-        "name": "NETWORK"
+        "name": "NET-1"
     }
 ]
