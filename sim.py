@@ -33,9 +33,9 @@ class Simulator:
             "cloud"   : "NET-3",
         }
         self.objects = {
-            "NET-1" : network.NetworkNode("NET-1", routes, hosts, host_id="LIGHT-1"),
-            "NET-2" : network.NetworkNode("NET-2", routes, hosts, host_id="LIGHT-2"),
-            "NET-3" : network.NetworkNode("NET-3", routes, hosts, host_id="cloud"),
+            "NET-1" : network.NetworkNode("NET-1", "LIGHT-1", routes, hosts),
+            "NET-2" : network.NetworkNode("NET-2", "LIGHT-2", routes, hosts),
+            "NET-3" : network.NetworkNode("NET-3", "cloud", routes, hosts),
             "cloud" : cloud.Cloud("NET-3"),
             "LIGHT-1" : device.Device("LIGHT-1", "NET-1"),
             "LIGHT-2" : device.Device("LIGHT-2", "NET-2"),
