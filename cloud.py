@@ -6,6 +6,9 @@ class Cloud(events.SimObject):
     def __init__(self, node):
         self.node = node
         self.log = []
+        self._writeCount = 0
+        self._readCount = 0
+        self._time = 0
 
     def onEvent(self, event):
         self.log.append(event)
@@ -21,7 +24,8 @@ class Cloud(events.SimObject):
                 "light_brightness" : 0.7,
                 "light_id" : event.source
             }
-
+            writeCount = writeCount + 1
+            self._time = fire_time
             return [brightness_control]
 
         if event.type == events.BRIGHTNESS_CONTROL_EVENT:
@@ -47,12 +51,23 @@ class Cloud(events.SimObject):
                 "payload" : brightness_control,
                 "proto" : events.UDP_SEND
             }
-
+            readCount = readCount + 1
+            self._time = fire_time
             return [new_network_send]
 
 
         if event.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT:
+            self._time = fire_time
             return []
 
     def power(self):
-        return self._power #defined in sim_object. you should find out how much power the cloud might take on every operation
+        return 0 #so it doesn't crash
+
+    def cost(self):
+        #Based on the cost to run a Amazon Database where
+        #Write Throughput: $0.0065 per hour for every 10 units of Write Capacity
+        #Read Throughput: $0.0065 per hour for every 50 units of Read Capacity
+        writeCost = 0.0065 * (self._writeCount/10.0)
+        readCost = 0.0065 * (self._readCount/50.0)
+        totalCost = (writeCost + readCost)/(self._time/1000000.0/60.0/60.0)
+        return totalCost #defined in sim_object. you should find out how much power the cloud might take on every operation

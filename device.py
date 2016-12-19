@@ -24,6 +24,8 @@ class Device(events.SimObject):
 		self.brightness = default_brightness
 		self.last_modified = 0
 		self.node = node
+		self.writeCount = 0;
+		self.readCount = 0;
 
 	def onEvent(self, event):
 		if event.params["light_id"] == self.id:
@@ -56,7 +58,7 @@ class Device(events.SimObject):
 					"dest" : "cloud",
 					"payload" : log_motion
 				}
-
+				writeCount = writeCount + 1;
 				return [new_network_send, brightness_control]
 
 			if event.type == events.BRIGHTNESS_CONTROL_EVENT:
