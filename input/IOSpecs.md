@@ -52,4 +52,25 @@ Modes supported:
 
 ##Output
 
-TODO
+One summary output is generated for each run of the simulation.
+
+###usage.json
+
+Contains information about simulation that ran
+
+        {"input-event-file": "events.json",
+         "input-config-file": "config.json",
+         "simulation-duration": 6000000000,
+         "component-power-usage":
+                [{ "name": "LIGHT-1", 
+                  "control-consumption": 1.34,
+                  "load-consumption": 140, 
+                }]
+        }
+- `input-event-file`: input file used for event generation
+- `input-config-file`: input file used for component generation
+- `simulation-duration`: length of simulation in microseconds
+- `component-power-usage`: list of power usage for each component:
+        - `name`: name of component
+        - `control-consumption`: power in Watts used by the control system
+        - `load-consumption`: power in Watts used by the load
