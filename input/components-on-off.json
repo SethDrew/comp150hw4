@@ -1,0 +1,19 @@
+[
+    {
+        "type": "device", 
+        "name": "LIGHT-1", 
+        "parameters": {
+            "load-wattage": 60, 
+            "initial_power_level": 1, 
+            "system-wattage": 0.01
+        }
+    }, 
+    {
+        "type": "cloud", 
+        "name": "CLOUD"
+    }, 
+    {
+        "type": "network", 
+        "name": "NETWORK"
+    }
+]

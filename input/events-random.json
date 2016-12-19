@@ -1,0 +1,102 @@
+[
+    {
+        "fire_time": 3487431084, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.988702069224204, 
+            "device_id": "LIGHT-3"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 461108225, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.11498375986503395, 
+            "device_id": "LIGHT-1"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 3283597612, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.39671238283883514, 
+            "device_id": "LIGHT-2"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 647976774, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.6921372147147999, 
+            "device_id": "LIGHT-4"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 2454600090, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.43354086119332447, 
+            "device_id": "LIGHT-5"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 3369135881, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.14394388604647135, 
+            "device_id": "LIGHT-1"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 713765118, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.5894962436940819, 
+            "device_id": "LIGHT-3"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 3293470191, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.6409402444624505, 
+            "device_id": "LIGHT-2"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 477544342, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.5928825169807486, 
+            "device_id": "LIGHT-3"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 1695888216, 
+        "destination": "NETWORK", 
+        "payload": {
+            "brightness": 0.8810622267442251, 
+            "device_id": "LIGHT-2"
+        }, 
+        "event_type": 2, 
+        "source": "CLOUD"
+    }
+]

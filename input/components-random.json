@@ -1,0 +1,55 @@
+[
+    {
+        "type": "cloud", 
+        "name": "CLOUD"
+    }, 
+    {
+        "type": "network", 
+        "name": "NETWORK"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-1", 
+        "parameters": {
+            "load-wattage": 60, 
+            "initial_power_level": 0.9978936449789074, 
+            "system-wattage": 0.01
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-2", 
+        "parameters": {
+            "load-wattage": 60, 
+            "initial_power_level": 0.7943106513178485, 
+            "system-wattage": 0.01
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-3", 
+        "parameters": {
+            "load-wattage": 60, 
+            "initial_power_level": 0.7143759396694527, 
+            "system-wattage": 0.01
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-4", 
+        "parameters": {
+            "load-wattage": 60, 
+            "initial_power_level": 0.12446215347100087, 
+            "system-wattage": 0.01
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-5", 
+        "parameters": {
+            "load-wattage": 60, 
+            "initial_power_level": 0.3895216040132018, 
+            "system-wattage": 0.01
+        }
+    }
+]

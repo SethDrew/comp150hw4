@@ -40,5 +40,16 @@ Contains a list of events to fire
 - `destination`: destination name (string)
 - `payload`: list of message payload items
 
+### Input Generator
+
+To generate config & event files, run the included python script:
+
+        python generate.py [mode] [number of events]
+
+Modes supported:
+- `simple`: generates cloud created on and off events for 1 light every second
+- `random`: generates random brightness events for random lights at random times
+
 ##Output
 
+TODO
