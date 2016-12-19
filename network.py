@@ -7,7 +7,7 @@
 
 import events
 
-# DELAYS
+# DELAYS in microseconds
 TO_NET_DELAY = 5
 FROM_NET_DELAY = 5
 
@@ -43,11 +43,8 @@ class NetworkNode(events.SimObject):
 		low_watts - Power consumption during passive listening.
 
 	Methods:
-		onEvent - Acts on given event, returns resulting list of events.
-
-	Members:
-		power - Power consumed up to and including the most recent event.
-
+		onEvent - Acts on given event, returns resulting list of events. Inherited.
+		power - Returns the power usage from the simulation. Inhereted from SimObject
 	"""
 	def __init__(self, sim_id, host_id, routes, hosts, high_watts=HIGH, low_watts=LOW):
 		self._sim_id = sim_id
@@ -61,7 +58,7 @@ class NetworkNode(events.SimObject):
 		self._pending_messages = {} # Map from seq number to message
 
 		self._last_event_time = 0
-		self.power = 0
+		self._power = 0
 
 	def onEvent(self, event):
 		"""onEvent(event)
@@ -94,10 +91,10 @@ class NetworkNode(events.SimObject):
 
 		delay = new_events[0].fire_time - event.fire_time
 
-		self.power += (
+		self._power += (
 			self._low * (new_events[0].fire_time - self._last_event_time) +
 			self._high * (delay / 4) # Estimate a quarter of delay isn't prop
-		)
+		) * events.TIMESTEP
 
 		self._last_event_time = event.fire_time
 
