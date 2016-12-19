@@ -86,7 +86,7 @@ class NetworkNode(events.SimObject):
 			events.UDP_SEND : self._udpSend,
 			events.UDP_RECEIVE : self._udpReceive,
 			events.TCP_SEND : self._tcpSend,
-			events.TCP_RECEIVE : self._tcpReceive
+			events.TCP_RECEIVE : self._tcpReceive,
 		}[event.type](event)
 
 		delay = new_events[0].fire_time - event.fire_time

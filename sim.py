@@ -62,6 +62,7 @@ class Simulator:
             for event in new_events:
                 eventq.push(event)
 
+        
         for k, o in self.objects.iteritems():
             print "{} used {} Watts".format(k, o.power())
             
