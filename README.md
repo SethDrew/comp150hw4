@@ -15,3 +15,7 @@ run the simulation. To run the simulation on different files:
 Make sure to have Python v2.7 installed.
         
 See IOSpecs.md for how to run the generator independently
+
+
+Our report is in Final_Report.pdf
+
