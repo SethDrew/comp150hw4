@@ -1,0 +1,69 @@
+[
+    {
+        "type": "cloud", 
+        "name": "cloud", 
+        "parameters": {
+            "network-node": "NET-0"
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-BEDROOM", 
+        "parameters": {
+            "standby-usage": 5, 
+            "max-lumens": 809, 
+            "network-node": "NET-1", 
+            "lumens-per-watt": 70.3, 
+            "default-brightness": 1
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-1"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-BATHROOM", 
+        "parameters": {
+            "standby-usage": 5, 
+            "max-lumens": 809, 
+            "network-node": "NET-2", 
+            "lumens-per-watt": 70.3, 
+            "default-brightness": 1
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-2"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-KITCHEN", 
+        "parameters": {
+            "standby-usage": 5, 
+            "max-lumens": 809, 
+            "network-node": "NET-3", 
+            "lumens-per-watt": 70.3, 
+            "default-brightness": 1
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-3"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-LIVING", 
+        "parameters": {
+            "standby-usage": 5, 
+            "max-lumens": 809, 
+            "network-node": "NET-4", 
+            "lumens-per-watt": 70.3, 
+            "default-brightness": 1
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-4"
+    }
+]
