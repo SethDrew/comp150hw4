@@ -83,7 +83,12 @@ class Simulator:
                 if DEBUG:
                     print "{}.onEvent({})".format(event.dest, event._event_to_string[event.type])
                 new_events = self.objects[event.dest].onEvent(event)
-                f.write("{}:{}".format(event.dest, self.objects[event.dest].power()))
+                
+                #object is outputting x kWH for y seconds.
+                #if it is a network object, I need to say for "delay" seconds
+                for k, o in self.objects.iteritems():
+                    f.write("{}:{}:{}\n".format(k, o.current_power(event)/(1000 * 3600), event.fire_time / events.ONE_HOUR))
+
                 if DEBUG:
                     print "Got resulting events:"
                     print new_events

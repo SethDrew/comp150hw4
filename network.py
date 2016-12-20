@@ -59,6 +59,8 @@ class NetworkNode(events.SimObject):
 
 		self._last_event_time = 0
 		self._power = 0
+		self._curpower = 0
+		self._delay = 0
 	def onEvent(self, event):
 		"""onEvent(event)
 
@@ -94,19 +96,25 @@ class NetworkNode(events.SimObject):
 			events.TCP_RECEIVE : self._tcpReceive,
 		}[event.type](event)
 
-		delay = new_events[0].fire_time - event.fire_time
+		self._delay = new_events[0].fire_time - event.fire_time
 
 		self._power += (
 			self._low * (new_events[0].fire_time - self._last_event_time) +
-			self._high * (delay / 4) # Estimate a quarter of delay isn't prop
+			self._high * (self._delay / 4) # Estimate a quarter of delay isn't prop
 		) * events.TIMESTEP
 
 		self._last_event_time = event.fire_time
 
-		return new_events, delay
+		return new_events
 
 	def power(self):
 		return self._power
+
+	def current_power(self, event):
+		if event.fire_time > self._delay + self._last_event_time:
+			return self._low
+		else:
+			return self._high
 
 	def _networkSend(self, event):
 		proto = event.params["proto"]
