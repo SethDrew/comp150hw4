@@ -47,7 +47,7 @@ class NetworkNode(events.SimObject):
 		power - Returns the power usage from the simulation. Inhereted from SimObject
 	"""
 	def __init__(self, sim_id, host_id, routes, hosts, high_watts=HIGH, low_watts=LOW):
-		self._sim_id = sim_id
+		self.id = sim_id
 		self._host_id = host_id
 		self._routing_table = routes
 		self._hosts = hosts
@@ -80,7 +80,7 @@ class NetworkNode(events.SimObject):
 			TCP_RECEIVE - Used by node to register receipt of TCP message.
 		"""
 		if event.type == events.EXIT_EVENT:
-			self.power += self._low * (event.fire_time - self._last_event_time)
+			self._power += self._low * (event.fire_time - self._last_event_time) * events.TIMESTEP
 			self._last_event_time = event.fire_time
 
 			return []
@@ -116,7 +116,7 @@ class NetworkNode(events.SimObject):
 			proto,
 			event.fire_time + TO_NET_DELAY,
 			event.source,
-			self._sim_id,
+			self.id,
 			params = {
 				"src" : event.params["src"],
 				"dest" : event.params["dest"],
@@ -139,7 +139,7 @@ class NetworkNode(events.SimObject):
 		return [events.Event(
 			events.UDP_RECEIVE,
 			event.fire_time + UDP_SEND_DELAY,
-			self._sim_id,
+			self.id,
 			next_hop,
 			event.params
 		)]
@@ -147,12 +147,12 @@ class NetworkNode(events.SimObject):
 	def _udpReceive(self, event):
 		event.fire_time += UDP_RECEIVE_DELAY
 
-		if self._hosts[event.params["dest"]] == self._sim_id:
+		if self._hosts[event.params["dest"]] == self.id:
 			return [events.Event(
 				events.NETWORK_RECEIVE,
 				event.fire_time,
-				self._sim_id,
-				self._sim_id,
+				self.id,
+				self.id,
 				params = event.params
 			)]
 		else:
@@ -164,7 +164,7 @@ class NetworkNode(events.SimObject):
 			syn_event = events.Event(
 				events.TCP_SEND,
 				event.fire_time,
-				self._sim_id,
+				self.id,
 				event.dest,
 				params = {
 					"tcp-type" : "SYN",
@@ -186,7 +186,7 @@ class NetworkNode(events.SimObject):
 		return [events.Event(
 			events.TCP_RECEIVE,
 			event.fire_time + TCP_SEND_DELAY,
-			self._sim_id,
+			self.id,
 			next_hop,
 			event.params
 		)]
@@ -198,12 +198,12 @@ class NetworkNode(events.SimObject):
 
 		event.fire_time += TCP_RECEIVE_DELAY
 
-		if self._hosts[event.params["dest"]] == self._sim_id:
+		if self._hosts[event.params["dest"]] == self.id:
 			if tcp_type == "SYN" or tcp_type == "SYN-ACK":
 				response = events.Event(
 					events.TCP_SEND,
 					event.fire_time,
-					self._sim_id,
+					self.id,
 					event.params["src"],
 					params = {
 						"tcp-type" : "SYN-ACK" if tcp_type == "SYN" else "ACK",
@@ -226,8 +226,8 @@ class NetworkNode(events.SimObject):
 				return [events.Event(
 					events.NETWORK_RECEIVE,
 					event.fire_time,
-					self._sim_id,
-					self._sim_id,
+					self.id,
+					self.id,
 					params = event.params
 				)]
 		else:
