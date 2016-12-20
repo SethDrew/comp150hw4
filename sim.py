@@ -45,7 +45,11 @@ class Simulator:
             
             # Add device and host network node
             elif(item["type"] == "device"):
-                self.objects[item["name"]] = device.Device(item["type"], item["parameters"]["network-node"])
+                self.objects[item["name"]] = device.Device(item["type"], 
+                                                           item["parameters"]["network-node"],
+                                                           item["parameters"]["lumens-per-watt"],
+                                                           item["parameters"]["max-lumens"],
+                                                           item["parameters"]["standby-usage"])
                 hosts[item["name"]] = item["parameters"]["network-node"]
                 
         #Add network nodes

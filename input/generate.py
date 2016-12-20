@@ -29,8 +29,9 @@ if(sys.argv[1] == "simple"):
         components = [{ "type": 'device',
                         "name": "LIGHT-1",
                         "parameters": { "initial_power_level": 1,
-                                        "load-wattage": 60,
-                                        "system-wattage": 0.01,
+                                        "max-lumens": 800,
+                                        "lumens-per-watt": 14,
+                                        "standby-usage": 5,
                                         "network-node": "NET-1"}
                      },
                      { "type": "cloud",
@@ -77,8 +78,9 @@ if(sys.argv[1] == "random"):
                 components.append({ "type": 'device',
                         "name": "LIGHT-"+str(i+1),
                         "parameters": { "initial_power_level": random.random(),
-                                        "load-wattage": 60,
-                                        "system-wattage": 0.01,
+                                        "max-lumens": 800,
+                                        "lumens-per-watt": 14,
+                                        "standby-usage": 5,
                                         "network-node": "NET-"+str(i+1)}
                      })
                 components.append({ "type": "network", "name": "NET-"+str(i+1)})
@@ -136,8 +138,9 @@ if(sys.argv[1] == "control"):
                 components.append({ "type": 'device',
                         "name": "LIGHT-"+str(i+1),
                         "parameters": { "initial_power_level": 0,
-                                        "load-wattage": 60,
-                                        "system-wattage": 0.01,
+                                        "max-lumens": 800,
+                                        "lumens-per-watt": 14,
+                                        "standby-usage": 5,
                                         "network-node": "NET-"+str(i+1)}
                      })
                 components.append({ "type": "network", "name": "NET-"+str(i+1)})

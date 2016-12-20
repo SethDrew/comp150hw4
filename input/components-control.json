@@ -10,10 +10,11 @@
         "type": "device", 
         "name": "LIGHT-1", 
         "parameters": {
+            "standby-usage": 5, 
             "network-node": "NET-1", 
-            "load-wattage": 60, 
+            "lumens-per-watt": 14, 
             "initial_power_level": 0, 
-            "system-wattage": 0.01
+            "max-lumens": 800
         }
     }, 
     {
