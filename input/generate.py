@@ -28,7 +28,7 @@ if(sys.argv[1] == "simple"):
         
         components = [{ "type": 'device',
                         "name": "LIGHT-1",
-                        "parameters": { "initial_power_level": 1,
+                        "parameters": { "default-brightness": 1,
                                         "max-lumens": 800,
                                         "lumens-per-watt": 14,
                                         "standby-usage": 5,
@@ -77,7 +77,7 @@ if(sys.argv[1] == "random"):
         for i in range(0,5):
                 components.append({ "type": 'device',
                         "name": "LIGHT-"+str(i+1),
-                        "parameters": { "initial_power_level": random.random(),
+                        "parameters": { "default-brightness": random.random(),
                                         "max-lumens": 800,
                                         "lumens-per-watt": 14,
                                         "standby-usage": 5,
