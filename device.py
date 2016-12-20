@@ -31,7 +31,6 @@ class Device(events.SimObject):
                         ) * events.TIMESTEP                      #scaling to seconds
                     )
         self._sensor_power += (time_now-self.last_modified) * self.standby_usage * events.TIMESTEP
-
         
     def sensor_power(self):
         return self._sensor_power
