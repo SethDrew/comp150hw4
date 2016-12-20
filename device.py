@@ -30,6 +30,11 @@ class Device(events.SimObject):
 
                         ) * events.TIMESTEP                      #scaling to seconds
                     )
+
+    def current_power(self):
+    	#return current power usage in watts
+    	return (self.max_lumens*self.brightness)/self.lpw + self.standby_usage
+
     def onEvent(self, event):
 
         if event.type == events.MOTION_EVENT:
