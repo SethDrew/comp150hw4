@@ -45,7 +45,7 @@ def plot():
 
 
 
-def plot_totals():
+def plot_totals_bydevice():
 
 
     data = []
@@ -67,5 +67,5 @@ def plot_totals():
 
     py.plot(fig, filename="power_over_time")
 
-plot_totals()
+plot_totals_bydevice()
 

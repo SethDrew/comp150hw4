@@ -21,16 +21,19 @@ class Device(events.SimObject):
         self.lpw = lpw
         self.max_lumens = max_lumens
         self.standby_usage = standby_usage
+        self._sensor_power = 0; #keep track of sensor power seperately
     def _update_power(self, time_now):
         self._power += (
                         (time_now-self.last_modified) *   #change in time. microseconds
                         (
-                            (self.max_lumens * self.brightness)/self.lpw + #watts from bulb
-                            self.standby_usage     #watts from sensor
+                            (self.max_lumens * self.brightness)/self.lpw   #watts from bulb
 
                         ) * events.TIMESTEP                      #scaling to seconds
                     )
-
+        self._sensor_power += (time_now-self.last_modified) * self.standby_usage * events.TIMESTEP
+        
+    def sensor_power(self):
+        return self._sensor_power
     def current_power(self, event):
     	#return current power usage in watts
     	return (float(self.max_lumens)*self.brightness)/self.lpw + self.standby_usage
