@@ -106,7 +106,7 @@ class Simulator:
             for k, o in self.objects.iteritems():
                 o.onEvent(exit_event) #tell each object that the game is over. time to go home.
                 if(o.id.startswith("cloud")):
-                    print "{} used {} Dollars".format(k, o.cost()) #each object should have updated power now.
+                    print "{} used {} Dollars".format(k, o.cost(exit_event.fire_time)) #each object should have updated power now.
                 else:
                     kwh = o.power()/(1000 * 3600)
                     print "{} used {} kWH".format(k, kwh) #each object should have updated power now.
