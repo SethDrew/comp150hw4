@@ -2,7 +2,8 @@ import events
 CLOUD_DELAY = 200000
 
 class Cloud(events.SimObject):
-    def __init__(self, node):
+    def __init__(self, id, node):
+        self.id = id
         self.node = node
         self.log = []
         self._writeCount = 0
@@ -58,7 +59,7 @@ class Cloud(events.SimObject):
         if event.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT:
             self._time = event.fire_time
             return []
-        if event.type == EXIT_EVENT:
+        if event.type == events.EXIT_EVENT:
             self._time = event.fire_time
 
     def cost(self):

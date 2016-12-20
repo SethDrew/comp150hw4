@@ -6,6 +6,7 @@
 
 class SimObject:
     _power = 0
+    id = ""
     def onEvent(self, event): 
         # Generate side effects (event list) to return to the simulator
         raise NotImplementedError("onEvent function must be subclassed")
@@ -48,6 +49,10 @@ class Event:
         return "Event: {} at {} from {} to {}".format(self._event_to_string[self.type], self.fire_time, self.source, self.dest)
 
 TIMESTEP = 1/1000000.0
+ONE_SECOND = 1/TIMESTEP
+ONE_MINUTE = ONE_SECOND * 60
+ONE_HOUR =  ONE_MINUTE * 60
+ONE_DAY = ONE_HOUR * 24
 ##################    EVENT CONSTANTS    ##################
 
 MOTION_EVENT = 0 
@@ -68,7 +73,6 @@ OnEvent function:
         Store in log
 """
 
-LOG_MOTION_EVENT = 1 #this is just used to percolate message through network
 
 BRIGHTNESS_CONTROL_EVENT = 2 #used by human interaction, or cloud decision
 """
