@@ -40,7 +40,7 @@ class Simulator:
            
             # Add cloud
             elif(item["type"] == "cloud"):
-                self.objects[item["name"]] = cloud.Cloud(item["parameters"]["network-node"])
+                self.objects[item["name"]] = cloud.Cloud(item["name"], item["parameters"]["network-node"])
                 hosts[item["name"]] = item["parameters"]["network-node"]
             
             # Add device and host network node
