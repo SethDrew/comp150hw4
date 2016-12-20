@@ -4,10 +4,10 @@
         "name": "LIGHT-1", 
         "parameters": {
             "standby-usage": 5, 
+            "max-lumens": 800, 
             "network-node": "NET-1", 
             "lumens-per-watt": 14, 
-            "initial_power_level": 1, 
-            "max-lumens": 800
+            "default-brightness": 1
         }
     }, 
     {
