@@ -347,8 +347,8 @@ if(sys.argv[1] == "one-person"):
                 components.append({ "type": 'device',
                         "name": lights[i],
                         "parameters": { "default-brightness": 1,
-                                        "max-lumens": 809,
-                                        "lumens-per-watt": 70.3,
+                                        "max-lumens": (809 if (i == 0, i == 3) else 630),
+                                        "lumens-per-watt": (70.3 if (i == 0, i == 3) else 75.7),
                                         "standby-usage": 5,
                                         "network-node": "NET-"+str(i+1)}
                      })
