@@ -82,15 +82,16 @@ class Simulator:
             event_data = json.load(data_file)
            
         # Add every event to the queue
-        for event in event_data:   
-            print(event["parameters"])          
-            temp = events.Event(int(event["event_type"]),
-                                int(event["fire_time"]),
-                                event["source"],
-                                event["destination"],
-                                event["parameters"])            
-            eventq.push(temp)
-                        
+        for event in event_data:
+            if(event["event_type"] != 5): # Don't do this for exit events       
+                temp = events.Event(int(event["event_type"]),
+                                    int(event["fire_time"]),
+                                    event["source"],
+                                    event["destination"],
+                                    event["parameters"])            
+                eventq.push(temp)
+            else:                           # but store the exit time for later
+                end_time = int(event["fire_time"])            
     
         while not eventq.empty():
             event = eventq.pop()
@@ -109,7 +110,7 @@ class Simulator:
 
 
         #using leftover last event that was registered for the last fire time              
-        exit_event = events.Event(events.EXIT_EVENT, event.fire_time+events.ONE_DAY, "", "") 
+        exit_event = events.Event(events.EXIT_EVENT, end_time, "", "") 
         for k, o in self.objects.iteritems():
             o.onEvent(exit_event) #tell each object that the game is over. time to go home.
             if(o.id.startswith("cloud")):

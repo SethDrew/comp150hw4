@@ -15,6 +15,12 @@ if(sys.argv[1] == "simple"):
                                "parameters": {"light_id": "LIGHT-1",
                                            "light_brightness": i%2}
                                })
+                               
+        events.append({"fire_time": (int(sys.argv[2])-1)*MICROSECONDS_IN_SECOND,
+                       "event_type": 5,
+                       "source": "",
+                       "destination": "",
+                       "parameters": {}});
         
         text_file = open("events-on-off.json", "w")
         text_file.write(json.dumps(events,indent=4))
@@ -50,6 +56,12 @@ if(sys.argv[1] == "random"):
                                "parameters": {"light_id": "LIGHT-"+str(random.randint(1,5)),
                                            "light_brightness": random.random()}
                                })
+        
+        events.append({"fire_time": 3600*MICROSECONDS_IN_SECOND,
+               "event_type": 5,
+               "source": "",
+               "destination": "",
+               "parameters": {}});
         
         text_file = open("events-random.json", "w")
         text_file.write(json.dumps(events,indent=4))
@@ -103,6 +115,12 @@ if(sys.argv[1] == "control"):
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
                                "parameters": {"light_brightness": 0}})
+                               
+        events.append({"fire_time": 24*3600*MICROSECONDS_IN_SECOND, # One day
+               "event_type": 5,
+               "source": "",
+               "destination": "",
+               "parameters": {}});
         
         text_file = open("events-control.json", "w")
         text_file.write(json.dumps(events,indent=4))
@@ -114,7 +132,7 @@ if(sys.argv[1] == "control"):
                        "parameters": {"network-node": "NET-0"}
                      }]            
                      
-        for i in range(0,5):
+        for i in range(0,int(sys.argv[2])):
                 components.append({ "type": 'device',
                         "name": "LIGHT-"+str(i+1),
                         "parameters": { "initial_power_level": 0,

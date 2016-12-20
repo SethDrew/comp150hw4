@@ -1,7 +1,10 @@
 [
     {
         "type": "cloud", 
-        "name": "CLOUD"
+        "name": "CLOUD", 
+        "parameters": {
+            "network-node": "NET-0"
+        }
     }, 
     {
         "type": "device", 
@@ -16,61 +19,5 @@
     {
         "type": "network", 
         "name": "NET-1"
-    }, 
-    {
-        "type": "device", 
-        "name": "LIGHT-2", 
-        "parameters": {
-            "network-node": "NET-2", 
-            "load-wattage": 60, 
-            "initial_power_level": 0, 
-            "system-wattage": 0.01
-        }
-    }, 
-    {
-        "type": "network", 
-        "name": "NET-2"
-    }, 
-    {
-        "type": "device", 
-        "name": "LIGHT-3", 
-        "parameters": {
-            "network-node": "NET-3", 
-            "load-wattage": 60, 
-            "initial_power_level": 0, 
-            "system-wattage": 0.01
-        }
-    }, 
-    {
-        "type": "network", 
-        "name": "NET-3"
-    }, 
-    {
-        "type": "device", 
-        "name": "LIGHT-4", 
-        "parameters": {
-            "network-node": "NET-4", 
-            "load-wattage": 60, 
-            "initial_power_level": 0, 
-            "system-wattage": 0.01
-        }
-    }, 
-    {
-        "type": "network", 
-        "name": "NET-4"
-    }, 
-    {
-        "type": "device", 
-        "name": "LIGHT-5", 
-        "parameters": {
-            "network-node": "NET-5", 
-            "load-wattage": 60, 
-            "initial_power_level": 0, 
-            "system-wattage": 0.01
-        }
-    }, 
-    {
-        "type": "network", 
-        "name": "NET-5"
     }
 ]

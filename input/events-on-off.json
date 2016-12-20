@@ -98,5 +98,12 @@
             "light_id": "LIGHT-1"
         }, 
         "source": "CLOUD"
+    }, 
+    {
+        "fire_time": 9000000, 
+        "destination": "", 
+        "event_type": 5, 
+        "parameters": {}, 
+        "source": ""
     }
 ]

@@ -20,6 +20,7 @@ class Event:
                         2:"BRIGHTNESS_CONTROL_EVENT",
                         3:"GENERATE_UPDATE_DEFAULT_BRIGHTNESS_EVENT",
                         4:"UPDATE_DEFAULT_BRIGHTNESS_EVENT",
+                        5:"EXIT_EVENT",
                         8:"NETWORK_SEND" ,
                         9:"NETWORK_RECEIVE",
                         90:"UDP_SEND",
