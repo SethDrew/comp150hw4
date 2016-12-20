@@ -89,11 +89,11 @@ def plot_totals_bytype():
         elif names[i].startswith("NET"):
             amms_aggregate[2] += ammounts[i]
 
-    text_ammounts = ["{} watts".format(int(a * 1000 * 3600)) for a in amms_aggregate]
+    text_ammounts = ["{} kWH".format(a) for a in amms_aggregate]
 
     for name, ammount in zip(names, ammounts):
        fig = {
-           'data': [{'labels': ["Sensors / Microcontrollers", "Lights", "Network"],
+           'data': [{'labels': [ "Lights", "Sensors / Microcontrollers", "Network"],
                      'values': amms_aggregate,
                      'text' : text_ammounts,
                      'type': 'pie'}],
@@ -103,6 +103,6 @@ def plot_totals_bytype():
 
     py.plot(fig, filename="power_over_time")
 
-plot()
+plot_totals_bytype()
 
 

@@ -136,8 +136,8 @@ if(sys.argv[1] == "control"):
                 components.append({ "type": 'device',
                         "name": lights[i],
                         "parameters": { "default-brightness": 1,
-                                        "max-lumens": 850,
-                                        "lumens-per-watt": 14,
+                                        "max-lumens": 800,
+                                        "lumens-per-watt": 62,
                                         "standby-usage": 0,
                                         "network-node": ""}
                      })
