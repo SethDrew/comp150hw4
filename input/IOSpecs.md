@@ -12,17 +12,18 @@ Contains details about the components of the system.
 
         [{ "type": 'device'
            "name": "LIGHT-1",
-           "parameters": {"initial_power_level": 0.5,
-                          "load-wattage": 60,
-                          "system-wattage": 0.01,
-                          "network-node": "NET-1"}
+           "parameters": {
+                            "standby-usage": 5, 
+                            "max-lumens": 809, 
+                            "network-node": "NET-1", 
+                            "lumens-per-watt": 70.3, 
+                            "default-brightness": 1
+                          }
         }]
 
 - `type`: type of component, currently only `device` is supported.
 - `name`: name of the component (string)
 - `parameters`: the parameters required for a particular component
-
-TODO: Add details on parameters
 
 ### events.json
 
@@ -32,14 +33,14 @@ Contains a list of events to fire
           "event_type": 0,                // Motion Event
           "source": "LIGHT-1", 
           "destination": "CLOUD",
-          "payload": {"brightness": 1}}]
+          "parameter": {"brightness": 1}}]
 
 
 - `fire_time`: time event will fire in micro-seconds (int)
 - `event_type`: event to fire (int, see events.py for definitions)
 - `source`: source name (string)
 - `destination`: destination name (string)
-- `payload`: list of message payload items
+- `parameters`: list of message parameter items
 
 ### Input Generator
 
@@ -50,28 +51,5 @@ To generate config & event files, run the included python script:
 Modes supported:
 - `simple`: generates cloud created on and off events for 1 light every second
 - `random`: generates random brightness events for random lights at random times
-
-##Output
-
-One summary output is generated for each run of the simulation.
-
-###usage.json
-
-Contains information about simulation that ran
-
-        {"input-event-file": "events.json",
-         "input-config-file": "config.json",
-         "simulation-duration": 6000000000,
-         "component-power-usage":
-                [{ "name": "LIGHT-1", 
-                  "control-consumption": 1.34,
-                  "load-consumption": 140, 
-                }]
-        }
-- `input-event-file`: input file used for event generation
-- `input-config-file`: input file used for component generation
-- `simulation-duration`: length of simulation in microseconds
-- `component-power-usage`: list of power usage for each component:
-        - `name`: name of component
-        - `control-consumption`: power in Watts used by the control system
-        - `load-consumption`: power in Watts used by the load
+- `control`: generates a control scenario for 1 person
+- `one-person`: generates an IOT scenario for 1 person
