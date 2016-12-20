@@ -57,6 +57,8 @@ class Cloud(events.SimObject):
         if event.type == events.UPDATE_DEFAULT_BRIGHTNESS_EVENT:
             return []
         if event.type == events.EXIT_EVENT:
+            self._time = event.fire_time
+            return []
 
     def cost(self, current_time):
         #Based on the cost to run a Amazon Database where
