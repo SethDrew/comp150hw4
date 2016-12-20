@@ -31,9 +31,9 @@ class Device(events.SimObject):
                         ) * events.TIMESTEP                      #scaling to seconds
                     )
 
-    def current_power(self):
+    def current_power(self, event):
     	#return current power usage in watts
-    	return (self.max_lumens*self.brightness)/self.lpw + self.standby_usage
+    	return (float(self.max_lumens)*self.brightness)/self.lpw + self.standby_usage
 
     def onEvent(self, event):
 

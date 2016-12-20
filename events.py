@@ -13,7 +13,7 @@ class SimObject:
     def power(self):
         #return total power in watts used in simulation
         return self._power
-    def current_power(self):
+    def current_power(self, event):
         return 0
 
 class Event:

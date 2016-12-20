@@ -75,7 +75,7 @@ class Simulator:
                 eventq.push(temp)
             else:                           # but store the exit time for later
                 end_time = int(event["fire_time"])            
-        with open("power_bytime.txt", "w") as f:
+        with open("results/power_bytime.txt", "w") as f:
             while not eventq.empty():
                 event = eventq.pop()
                 if VERBOSE: 
@@ -84,10 +84,10 @@ class Simulator:
                     print "{}.onEvent({})".format(event.dest, event._event_to_string[event.type])
                 new_events = self.objects[event.dest].onEvent(event)
                 
-                #object is outputting x kWH for y seconds.
+                #object is outputting x watts for y seconds.
                 #if it is a network object, I need to say for "delay" seconds
                 for k, o in self.objects.iteritems():
-                    f.write("{}:{}:{}\n".format(k, o.current_power(event)/(1000 * 3600), event.fire_time / events.ONE_HOUR))
+                    f.write("{}:{}:{}\n".format(k, o.current_power(event), event.fire_time / events.ONE_SECOND))
 
                 if DEBUG:
                     print "Got resulting events:"
@@ -100,7 +100,7 @@ class Simulator:
 
         #using leftover last event that was registered for the last fire time              
         exit_event = events.Event(events.EXIT_EVENT, end_time, "", "") 
-        with open("exit_power_totals.txt", "w") as f:
+        with open("results/exit_power_totals.txt", "w") as f:
 
             for k, o in self.objects.iteritems():
                 o.onEvent(exit_event) #tell each object that the game is over. time to go home.
@@ -109,7 +109,7 @@ class Simulator:
                 else:
                     kwh = o.power()/(1000 * 3600)
                     print "{} used {} kWH".format(k, kwh) #each object should have updated power now.
-                    f.write("{}:{}".format(k, kwh))
+                    f.write("{}:{}\n".format(k, kwh))
 
 
 config_file = sys.argv[1]
