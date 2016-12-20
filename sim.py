@@ -77,27 +77,38 @@ class Simulator:
                 eventq.push(temp)
             else:                           # but store the exit time for later
                 end_time = int(event["fire_time"])            
+
+        last_event = None
         with open("results/power_bytime.txt", "w") as f:
             while not eventq.empty():
                 event = eventq.pop()
+
+
                 if VERBOSE: 
                     print "{} : {} --> {}".format(event._event_to_string[event.type], event.source, event.dest)
                 if DEBUG:
                     print "{}.onEvent({})".format(event.dest, event._event_to_string[event.type])
+                if last_event:
+                    for k, o in self.objects.iteritems():
+                        f.write("{}:{}:{}\n".format(k, o.current_power(last_event), event.fire_time / events.ONE_HOUR))
+                
                 new_events = self.objects[event.dest].onEvent(event)
                 
                 #object is outputting x watts for y seconds.
                 #if it is a network object, I need to say for "delay" seconds
+                
                 for k, o in self.objects.iteritems():
-                    f.write("{}:{}:{}\n".format(k, o.current_power(event), event.fire_time / events.ONE_SECOND))
+                    f.write("{}:{}:{}\n".format(k, o.current_power(event), event.fire_time / events.ONE_HOUR))
+                
 
                 if DEBUG:
                     print "Got resulting events:"
                     print new_events
 
-                for event in new_events:
-                    eventq.push(event)
-
+                for e in new_events:
+                    eventq.push(e)
+                last_event = event
+               
 
 
         #using leftover last event that was registered for the last fire time              
