@@ -79,6 +79,12 @@ class NetworkNode(events.SimObject):
 			TCP_SEND - Used by node to register new TCP message with itself.
 			TCP_RECEIVE - Used by node to register receipt of TCP message.
 		"""
+		if event.type == events.EXIT_EVENT:
+			self.power += self._low * (event.fire_time - self._last_event_time)
+			self._last_event_time = event.fire_time
+
+			return []
+			
 		new_events = {
 			events.NETWORK_SEND : self._networkSend,
 			events.NETWORK_RECEIVE : self._networkReceive,
@@ -86,7 +92,7 @@ class NetworkNode(events.SimObject):
 			events.UDP_SEND : self._udpSend,
 			events.UDP_RECEIVE : self._udpReceive,
 			events.TCP_SEND : self._tcpSend,
-			events.TCP_RECEIVE : self._tcpReceive
+			events.TCP_RECEIVE : self._tcpReceive,
 		}[event.type](event)
 
 		delay = new_events[0].fire_time - event.fire_time
@@ -99,6 +105,9 @@ class NetworkNode(events.SimObject):
 		self._last_event_time = event.fire_time
 
 		return new_events
+
+	def power(self):
+		return self._power
 
 	def _networkSend(self, event):
 		proto = event.params["proto"]

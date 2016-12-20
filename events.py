@@ -47,7 +47,7 @@ class Event:
             return ""
         return "Event: {} at {} from {} to {}".format(self._event_to_string[self.type], self.fire_time, self.source, self.dest)
 
-
+TIMESTEP = 1/1000000.0
 ##################    EVENT CONSTANTS    ##################
 
 MOTION_EVENT = 0 
@@ -98,7 +98,13 @@ OnEvent function:
             - send to appropriate lightbulb 
     Cloud: N/A
 """
+EXIT_EVENT = 5
+"""
 
+Called when exiting the program. The devices should tally up all the power they have been using"
+
+
+"""
 
 # Network Events
 # 
