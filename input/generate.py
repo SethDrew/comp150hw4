@@ -10,8 +10,8 @@ if(sys.argv[1] == "simple"):
         for i in range(0,int(sys.argv[2])):
                 events.append({"fire_time": i*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
-                               "source": "CLOUD",
-                               "destination": "CLOUD",
+                               "source": "cloud",
+                               "destination": "cloud",
                                "parameters": {"light_id": "LIGHT-1",
                                            "light_brightness": i%2}
                                })
@@ -34,7 +34,7 @@ if(sys.argv[1] == "simple"):
                                         "network-node": "NET-1"}
                      },
                      { "type": "cloud",
-                       "name": "CLOUD",
+                       "name": "cloud",
                        "parameters": {"network-node": "NET-0"}},
                      { "type": "network",
                        "name": "NET-1"}
@@ -51,8 +51,8 @@ if(sys.argv[1] == "random"):
         for i in range(0,int(sys.argv[2])):
                 events.append({"fire_time": random.randint(1, 3600*MICROSECONDS_IN_SECOND),
                                "event_type": 2,
-                               "source": "CLOUD",
-                               "destination": "CLOUD",
+                               "source": "cloud",
+                               "destination": "cloud",
                                "parameters": {"light_id": "LIGHT-"+str(random.randint(1,5)),
                                            "light_brightness": random.random()}
                                })
@@ -69,7 +69,7 @@ if(sys.argv[1] == "random"):
         
         components = [
                      { "type": "cloud",
-                       "name": "CLOUD",
+                       "name": "cloud",
                        "parameters": {"network-node": "NET-0"}
                      }]
                      
@@ -128,7 +128,7 @@ if(sys.argv[1] == "control"):
         
         components = [
                      { "type": "cloud",
-                       "name": "CLOUD",
+                       "name": "cloud",
                        "parameters": {"network-node": "NET-0"}
                      }]            
                      

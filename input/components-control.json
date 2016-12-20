@@ -1,7 +1,7 @@
 [
     {
         "type": "cloud", 
-        "name": "CLOUD", 
+        "name": "cloud", 
         "parameters": {
             "network-node": "NET-0"
         }
