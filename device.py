@@ -6,35 +6,35 @@
 # Implementation of device object
 import events
 
-
-LOAD = 60 #standard lightbulb operates at 60 Watts
-STANDBY_USAGE = 5 #each sensor uses approx. 5 watts for detection. 
-#We always want to know where people are in the house so we can control very finely where they move
-
-LPW = 14 #lumens per watt of incandescant lightbulb
-MAX_LUMENS = 800 #typical maximum brightness of household lightbulb
-
 #Delays
-TO_NET_DELAY = 5
-INTERNAL_DELAY = 6 
+# typical microprocessor takes 100us to read analog input
+INTERNAL_DELAY = 100 
 
 class Device(events.SimObject):
-    def __init__(self, id, node, default_brightness=.50):
+    def __init__(self, id, node, lpw, max_lumens, standby_usage, default_brightness=.50):
         self.id = id
         self.node = node
         self.default_brightness = default_brightness
         self.brightness = 0 #initialize all lights to off
         self.last_modified = 0
         self.node = node
+        self.lpw = lpw
+        self.max_lumens = max_lumens
+        self.standby_usage = standby_usage
     def _update_power(self, time_now):
         self._power += (
                         (time_now-self.last_modified) *   #change in time. microseconds
                         (
-                            (MAX_LUMENS * self.brightness)/LPW + #watts from bulb
-                            STANDBY_USAGE                        #watts from sensor
+                            (self.max_lumens * self.brightness)/self.lpw + #watts from bulb
+                            self.standby_usage     #watts from sensor
 
                         ) * events.TIMESTEP                      #scaling to seconds
                     )
+
+    def current_power(self):
+    	#return current power usage in watts
+    	return (self.max_lumens*self.brightness)/self.lpw + self.standby_usage
+
     def onEvent(self, event):
 
         if event.type == events.MOTION_EVENT:
