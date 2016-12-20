@@ -14,7 +14,8 @@ Contains details about the components of the system.
            "name": "LIGHT-1",
            "parameters": {"initial_power_level": 0.5,
                           "load-wattage": 60,
-                          "system-wattage": 0.01}
+                          "system-wattage": 0.01,
+                          "network-node": "NET-1"}
         }]
 
 - `type`: type of component, currently only `device` is supported.

@@ -11,7 +11,10 @@
     }, 
     {
         "type": "cloud", 
-        "name": "CLOUD"
+        "name": "CLOUD", 
+        "parameters": {
+            "network-node": "NET-0"
+        }
     }, 
     {
         "type": "network", 

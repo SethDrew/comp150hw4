@@ -12,7 +12,7 @@ if(sys.argv[1] == "simple"):
                                "event_type": 2,
                                "source": "CLOUD",
                                "destination": "NET-1",
-                               "payload": {"device_id": "LIGHT-1",
+                               "parameters": {"device_id": "LIGHT-1",
                                            "brightness": i%2}
                                })
         
@@ -28,7 +28,8 @@ if(sys.argv[1] == "simple"):
                                         "network-node": "NET-1"}
                      },
                      { "type": "cloud",
-                       "name": "CLOUD"},
+                       "name": "CLOUD",
+                       "parameters": {"network-node": "NET-0"}},
                      { "type": "network",
                        "name": "NET-1"}
                      ]
@@ -46,7 +47,7 @@ if(sys.argv[1] == "random"):
                                "event_type": 2,
                                "source": "CLOUD",
                                "destination": "NET-1",
-                               "payload": {"device_id": "LIGHT-"+str(random.randint(1,5)),
+                               "parameters": {"device_id": "LIGHT-"+str(random.randint(1,5)),
                                            "brightness": random.random()}
                                })
         
@@ -56,8 +57,9 @@ if(sys.argv[1] == "random"):
         
         components = [
                      { "type": "cloud",
-                       "name": "CLOUD"},
-                     ]
+                       "name": "CLOUD",
+                       "parameters": {"network-node": "NET-0"}
+                     }]
                      
         for i in range(0,5):
                 components.append({ "type": 'device',
@@ -82,25 +84,25 @@ if(sys.argv[1] == "control"):
                                "event_type": 2,
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
-                               "payload": {"brightness": 1}})
+                               "parameters": {"brightness": 1}})
         
                 events.append({"fire_time": 9*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
-                               "payload": {"brightness": 0}})
+                               "parameters": {"brightness": 0}})
                                
                 events.append({"fire_time": 18*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
-                               "payload": {"brightness": 1}})
+                               "parameters": {"brightness": 1}})
                 
                 events.append({"fire_time": 23*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
-                               "payload": {"brightness": 0}})
+                               "parameters": {"brightness": 0}})
         
         text_file = open("events-control.json", "w")
         text_file.write(json.dumps(events,indent=4))
@@ -108,8 +110,9 @@ if(sys.argv[1] == "control"):
         
         components = [
                      { "type": "cloud",
-                       "name": "CLOUD"}
-                     ]            
+                       "name": "CLOUD",
+                       "parameters": {"network-node": "NET-0"}
+                     }]            
                      
         for i in range(0,5):
                 components.append({ "type": 'device',
