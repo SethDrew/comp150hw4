@@ -1,3 +1,5 @@
 *.pyc
 .DS_Store
+results/exit_power_totals.txt
+results/power_bytime.txt
 
