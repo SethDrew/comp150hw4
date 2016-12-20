@@ -13,6 +13,8 @@ class SimObject:
     def power(self):
         #return total power in watts used in simulation
         return self._power
+    def current_power(self):
+        return 0
 
 class Event:
     _event_to_string = {0:"MOTION_EVENT",
