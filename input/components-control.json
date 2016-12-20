@@ -4,9 +4,9 @@
         "name": "LIGHT-BEDROOM", 
         "parameters": {
             "standby-usage": 0, 
-            "max-lumens": 850, 
+            "max-lumens": 800, 
             "network-node": "", 
-            "lumens-per-watt": 14, 
+            "lumens-per-watt": 62, 
             "default-brightness": 1
         }
     }, 
@@ -15,9 +15,9 @@
         "name": "LIGHT-BATHROOM", 
         "parameters": {
             "standby-usage": 0, 
-            "max-lumens": 850, 
+            "max-lumens": 800, 
             "network-node": "", 
-            "lumens-per-watt": 14, 
+            "lumens-per-watt": 62, 
             "default-brightness": 1
         }
     }, 
@@ -26,9 +26,9 @@
         "name": "LIGHT-KITCHEN", 
         "parameters": {
             "standby-usage": 0, 
-            "max-lumens": 850, 
+            "max-lumens": 800, 
             "network-node": "", 
-            "lumens-per-watt": 14, 
+            "lumens-per-watt": 62, 
             "default-brightness": 1
         }
     }, 
@@ -37,9 +37,9 @@
         "name": "LIGHT-LIVING", 
         "parameters": {
             "standby-usage": 0, 
-            "max-lumens": 850, 
+            "max-lumens": 800, 
             "network-node": "", 
-            "lumens-per-watt": 14, 
+            "lumens-per-watt": 62, 
             "default-brightness": 1
         }
     }

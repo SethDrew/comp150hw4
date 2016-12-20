@@ -136,8 +136,8 @@ if(sys.argv[1] == "control"):
                 components.append({ "type": 'device',
                         "name": lights[i],
                         "parameters": { "default-brightness": 1,
-                                        "max-lumens": 850,
-                                        "lumens-per-watt": 14,
+                                        "max-lumens": 800,
+                                        "lumens-per-watt": 62,
                                         "standby-usage": 0,
                                         "network-node": ""}
                      })
@@ -237,13 +237,13 @@ if(sys.argv[1] == "one-person"):
                        "destination": "LIGHT-KITCHEN",
                        "parameters": {"light_brightness": 0}})
                        
-        events.append({"fire_time": 8*3600*MICROSECONDS_IN_SECOND,
+        events.append({"fire_time": 8.5*3600*MICROSECONDS_IN_SECOND,
                        "event_type": 0,
                        "source": "LIGHT-LIVING",
                        "destination": "cloud",
                        "parameters": {}})
                        
-        events.append({"fire_time": 8.5*3600*MICROSECONDS_IN_SECOND,
+        events.append({"fire_time": 9*3600*MICROSECONDS_IN_SECOND,
                        "event_type": 2,
                        "source": "LIGHT-LIVING",
                        "destination": "LIGHT-LIVING",
