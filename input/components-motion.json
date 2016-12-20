@@ -1,0 +1,24 @@
+[
+    {
+        "type": "cloud", 
+        "name": "cloud", 
+        "parameters": {
+            "network-node": "NET-0"
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-1", 
+        "parameters": {
+            "standby-usage": 5, 
+            "network-node": "NET-1", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-1"
+    }
+]

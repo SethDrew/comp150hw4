@@ -1,0 +1,25 @@
+[
+    {
+        "fire_time": 3600000000, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-1"
+    }, 
+    {
+        "fire_time": 7200000000, 
+        "destination": "LIGHT-1", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-1"
+    }, 
+    {
+        "fire_time": 10800000000, 
+        "destination": "", 
+        "event_type": 5, 
+        "parameters": {}, 
+        "source": ""
+    }
+]
