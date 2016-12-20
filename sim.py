@@ -113,7 +113,7 @@ class Simulator:
                     print "{} used {} kWH".format(k, kwh) #each object should have updated power now.
                     f.write("{}:{}\n".format(k, kwh))
                     if k.startswith("LIGHT"):
-                        f.write("{}-sensor:{}\n".format(k, o.sensor_power()))
+                        f.write("{}-microcontroller-sensor:{}\n".format(k, o.sensor_power()/(1000 * 3600)))
 
 
 config_file = sys.argv[1]

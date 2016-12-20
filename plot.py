@@ -38,6 +38,7 @@ def plot():
             ),
         yaxis=dict(
             title="watts",
+            type="log"
             )
         )
     fig = dict(data=data, layout=layout)
@@ -67,5 +68,41 @@ def plot_totals_bydevice():
 
     py.plot(fig, filename="power_over_time")
 
-plot_totals_bydevice()
+
+def plot_totals_bytype():
+
+
+    data = []
+
+
+    with open("results/exit_power_totals.txt") as f:
+        results = f.read().split("\n")[:-1]
+
+    names, ammounts = [[x.split(":")[i] for x in results] for i in range(2)]    
+    ammounts = map(float, ammounts)
+    amms_aggregate = [0, 0, 0]
+    for i in range(len(names)):
+        if names[i].endswith("sensor"):
+            amms_aggregate[0] += ammounts[i]
+        elif names[i].startswith("LIGHT"):
+            amms_aggregate[1] += ammounts[i]
+        elif names[i].startswith("NET"):
+            amms_aggregate[2] += ammounts[i]
+
+    text_ammounts = ["{} watts".format(int(a * 1000 * 3600)) for a in amms_aggregate]
+
+    for name, ammount in zip(names, ammounts):
+       fig = {
+           'data': [{'labels': ["Sensors / Microcontrollers", "Lights", "Network"],
+                     'values': amms_aggregate,
+                     'text' : text_ammounts,
+                     'type': 'pie'}],
+           'layout': {'title': 'Total power usage by device'}
+            }
+
+
+    py.plot(fig, filename="power_over_time")
+
+plot()
+
 
