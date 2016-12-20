@@ -1,0 +1,1 @@
+python sim.py ./input/components-control.json ./input/events-control.json
