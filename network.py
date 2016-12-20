@@ -59,7 +59,6 @@ class NetworkNode(events.SimObject):
 
 		self._last_event_time = 0
 		self._power = 0
-
 	def onEvent(self, event):
 		"""onEvent(event)
 
@@ -104,7 +103,7 @@ class NetworkNode(events.SimObject):
 
 		self._last_event_time = event.fire_time
 
-		return new_events
+		return new_events, delay
 
 	def power(self):
 		return self._power

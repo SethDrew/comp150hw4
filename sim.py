@@ -7,7 +7,7 @@ import json
 
 import heapq
 
-DEBUG = 1
+DEBUG = 0
 VERBOSE = 1
 
 class EventQueue:
@@ -53,37 +53,16 @@ class Simulator:
             self.objects[hosts[host]] = network.NetworkNode(hosts[host], host, routes, hosts)
             
 
-#         #Each object has a unique network node associated with it. 
-#         #We are assuming only one hop is neccessary for now
-#         hosts = {
-#             "LIGHT-1" : "NET-1",
-#             "LIGHT-2" : "NET-2",
-#             "cloud"   : "NET-3",
-#         }
-#         self.objects = {
-#             "NET-1" : network.NetworkNode("NET-1", "LIGHT-1", routes, hosts),
-#             "NET-2" : network.NetworkNode("NET-2", "LIGHT-2", routes, hosts),
-#             "NET-3" : network.NetworkNode("NET-3", "cloud", routes, hosts),
-#             "cloud" : cloud.Cloud("NET-3"),
-#             "LIGHT-1" : device.Device("LIGHT-1", "NET-1"),
-#             "LIGHT-2" : device.Device("LIGHT-2", "NET-2"),
-#         }
     def run(self, event_file):
         
         eventq = EventQueue()
-        # m = events.Event(events.MOTION_EVENT, 
-        #           0, "LIGHT-1", "LIGHT-1", {"light_id" : "LIGHT-1"})
-#         user_control_event = events.Event(events.BRIGHTNESS_CONTROL_EVENT, 
-#                         0, "CLOUD", "CLOUD", {"light_id" : "LIGHT-1", "light_brightness" : .7})
-#         
-#         eventq.push(user_control_event)
-                        
+                 
         with open(event_file) as data_file:    
             event_data = json.load(data_file)
            
         # Add every event to the queue
         for event in event_data:
-            if(event["event_type"] != 5): # Don't do this for exit events       
+            if(event["event_type"] != 5): # Don't do this for exit events 
                 temp = events.Event(int(event["event_type"]),
                                     int(event["fire_time"]),
                                     event["source"],
@@ -92,33 +71,36 @@ class Simulator:
                 eventq.push(temp)
             else:                           # but store the exit time for later
                 end_time = int(event["fire_time"])            
-    
-        while not eventq.empty():
-            event = eventq.pop()
-            if VERBOSE: 
-                print "{} : {} --> {}".format(event._event_to_string[event.type], event.source, event.dest)
-            if DEBUG:
-                print "{}.onEvent({})".format(event.dest, event._event_to_string[event.type])
-            new_events = self.objects[event.dest].onEvent(event)
-            
-            if DEBUG:
-                print "Got resulting events:"
-                print new_events
+        with open("power_bytime.txt", "w") as f:
+            while not eventq.empty():
+                event = eventq.pop()
+                if VERBOSE: 
+                    print "{} : {} --> {}".format(event._event_to_string[event.type], event.source, event.dest)
+                if DEBUG:
+                    print "{}.onEvent({})".format(event.dest, event._event_to_string[event.type])
+                new_events = self.objects[event.dest].onEvent(event)
+                f.write("{}:{}".format(event.dest, self.objects[event.dest].power()))
+                if DEBUG:
+                    print "Got resulting events:"
+                    print new_events
 
-            for event in new_events:
-                eventq.push(event)
+                for event in new_events:
+                    eventq.push(event)
+
 
 
         #using leftover last event that was registered for the last fire time              
         exit_event = events.Event(events.EXIT_EVENT, end_time, "", "") 
-        for k, o in self.objects.iteritems():
-            o.onEvent(exit_event) #tell each object that the game is over. time to go home.
-            if(o.id.startswith("cloud")):
-                print "{} used {} Dollars".format(k, o.cost()) #each object should have updated power now.
+        with open("exit_power_totals.txt", "w") as f:
 
-            else:
-                print "{} used {} kWH".format(k, o.power()/(1000*3600)) #each object should have updated power now.
-            
+            for k, o in self.objects.iteritems():
+                o.onEvent(exit_event) #tell each object that the game is over. time to go home.
+                if(o.id.startswith("cloud")):
+                    print "{} used {} Dollars".format(k, o.cost()) #each object should have updated power now.
+                else:
+                    kwh = o.power()/(1000 * 3600)
+                    print "{} used {} kWH".format(k, kwh) #each object should have updated power now.
+                    f.write("{}:{}".format(k, kwh))
 
 
 config_file = sys.argv[1]
