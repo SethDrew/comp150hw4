@@ -7,8 +7,8 @@ import json
 
 import heapq
 
-DEBUG = 1
-VERBOSE = 1
+DEBUG = 0
+VERBOSE = 0
 
 class EventQueue:
     def __init__(self):
@@ -50,7 +50,8 @@ class Simulator:
                                                            item["parameters"]["lumens-per-watt"],
                                                            item["parameters"]["max-lumens"],
                                                            item["parameters"]["standby-usage"])
-                hosts[item["name"]] = item["parameters"]["network-node"]
+                if(item["parameters"]["network-node"] != ""):
+                    hosts[item["name"]] = item["parameters"]["network-node"]
                 
         #Add network nodes
         for host in hosts:
