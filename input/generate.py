@@ -11,9 +11,9 @@ if(sys.argv[1] == "simple"):
                 events.append({"fire_time": i*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
                                "source": "CLOUD",
-                               "destination": "NET-1",
-                               "parameters": {"device_id": "LIGHT-1",
-                                           "brightness": i%2}
+                               "destination": "CLOUD",
+                               "parameters": {"light_id": "LIGHT-1",
+                                           "light_brightness": i%2}
                                })
         
         text_file = open("events-on-off.json", "w")
@@ -46,9 +46,9 @@ if(sys.argv[1] == "random"):
                 events.append({"fire_time": random.randint(1, 3600*MICROSECONDS_IN_SECOND),
                                "event_type": 2,
                                "source": "CLOUD",
-                               "destination": "NET-1",
-                               "parameters": {"device_id": "LIGHT-"+str(random.randint(1,5)),
-                                           "brightness": random.random()}
+                               "destination": "CLOUD",
+                               "parameters": {"light_id": "LIGHT-"+str(random.randint(1,5)),
+                                           "light_brightness": random.random()}
                                })
         
         text_file = open("events-random.json", "w")
@@ -84,25 +84,25 @@ if(sys.argv[1] == "control"):
                                "event_type": 2,
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
-                               "parameters": {"brightness": 1}})
+                               "parameters": {"light_brightness": 1}})
         
                 events.append({"fire_time": 9*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
-                               "parameters": {"brightness": 0}})
+                               "parameters": {"light_brightness": 0}})
                                
                 events.append({"fire_time": 18*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
-                               "parameters": {"brightness": 1}})
+                               "parameters": {"light_brightness": 1}})
                 
                 events.append({"fire_time": 23*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
                                "source": "LIGHT-"+str(i+1),
                                "destination": "LIGHT-"+str(i+1),
-                               "parameters": {"brightness": 0}})
+                               "parameters": {"light_brightness": 0}})
         
         text_file = open("events-control.json", "w")
         text_file.write(json.dumps(events,indent=4))

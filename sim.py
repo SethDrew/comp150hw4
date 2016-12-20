@@ -27,8 +27,6 @@ class Simulator:
         with open(config_file) as data_file:    
                 config_data = json.load(data_file)
         
-        print(config_data)
-        
         routes = {}
         hosts = {}
         self.objects = {}
@@ -53,9 +51,6 @@ class Simulator:
         #Add network nodes
         for host in hosts:
             self.objects[hosts[host]] = network.NetworkNode(hosts[host], host, routes, hosts)
-        
-        print(hosts)
-        print(self.objects)
             
 
 #         #Each object has a unique network node associated with it. 
@@ -83,19 +78,18 @@ class Simulator:
 #         
 #         eventq.push(user_control_event)
                         
-                        
         with open(event_file) as data_file:    
             event_data = json.load(data_file)
            
         # Add every event to the queue
-        for event in event_data: 
-            print(event)               
+        for event in event_data:   
+            print(event["parameters"])          
             temp = events.Event(int(event["event_type"]),
                                 int(event["fire_time"]),
                                 event["source"],
                                 event["destination"],
                                 event["parameters"])            
-            eventq.push(temp)            
+            eventq.push(temp)
                         
         
         while not eventq.empty():
