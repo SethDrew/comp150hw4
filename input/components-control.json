@@ -10,15 +10,150 @@
         "type": "device", 
         "name": "LIGHT-1", 
         "parameters": {
-            "standby-usage": 5, 
+            "standby-usage": 0, 
             "network-node": "NET-1", 
             "lumens-per-watt": 14, 
             "initial_power_level": 0, 
-            "max-lumens": 800
+            "max-lumens": 850
         }
     }, 
     {
         "type": "network", 
         "name": "NET-1"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-2", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-2", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-2"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-3", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-3", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-3"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-4", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-4", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-4"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-5", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-5", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-5"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-6", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-6", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-6"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-7", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-7", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-7"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-8", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-8", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-8"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-9", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-9", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-9"
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-10", 
+        "parameters": {
+            "standby-usage": 0, 
+            "network-node": "NET-10", 
+            "lumens-per-watt": 14, 
+            "initial_power_level": 0, 
+            "max-lumens": 850
+        }
+    }, 
+    {
+        "type": "network", 
+        "name": "NET-10"
     }
 ]

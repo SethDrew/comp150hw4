@@ -1,0 +1,1 @@
+python sim.py ./input/components-on-off.json ./input/events-on-off.json
