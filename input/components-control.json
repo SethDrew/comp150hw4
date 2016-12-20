@@ -1,13 +1,46 @@
 [
     {
         "type": "device", 
-        "name": "LIGHT-1", 
+        "name": "LIGHT-BEDROOM", 
         "parameters": {
             "standby-usage": 0, 
+            "max-lumens": 850, 
             "network-node": "", 
             "lumens-per-watt": 14, 
-            "initial_power_level": 0, 
-            "max-lumens": 850
+            "default-brightness": 1
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-BATHROOM", 
+        "parameters": {
+            "standby-usage": 0, 
+            "max-lumens": 850, 
+            "network-node": "", 
+            "lumens-per-watt": 14, 
+            "default-brightness": 1
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-KITCHEN", 
+        "parameters": {
+            "standby-usage": 0, 
+            "max-lumens": 850, 
+            "network-node": "", 
+            "lumens-per-watt": 14, 
+            "default-brightness": 1
+        }
+    }, 
+    {
+        "type": "device", 
+        "name": "LIGHT-LIVING", 
+        "parameters": {
+            "standby-usage": 0, 
+            "max-lumens": 850, 
+            "network-node": "", 
+            "lumens-per-watt": 14, 
+            "default-brightness": 1
         }
     }
 ]

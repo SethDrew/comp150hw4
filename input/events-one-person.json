@@ -1,0 +1,176 @@
+[
+    {
+        "fire_time": 25200000000, 
+        "destination": "cloud", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 1, 
+            "light_id": "LIGHT-BEDROOM"
+        }, 
+        "source": "cloud"
+    }, 
+    {
+        "fire_time": 27000000000.0, 
+        "destination": "LIGHT-BEDROOM", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-BEDROOM"
+    }, 
+    {
+        "fire_time": 27000000000.0, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-BATHROOM"
+    }, 
+    {
+        "fire_time": 28800000000, 
+        "destination": "LIGHT-BATHROOM", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-BATHROOM"
+    }, 
+    {
+        "fire_time": 28800000000, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-KITCHEN"
+    }, 
+    {
+        "fire_time": 30600000000.0, 
+        "destination": "LIGHT-KITCHEN", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-KITCHEN"
+    }, 
+    {
+        "fire_time": 28800000000, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-LIVING"
+    }, 
+    {
+        "fire_time": 30600000000.0, 
+        "destination": "LIGHT-LIVING", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-LIVING"
+    }, 
+    {
+        "fire_time": 64800000000, 
+        "destination": "cloud", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 1, 
+            "light_id": "LIGHT-KITCHEN"
+        }, 
+        "source": "cloud"
+    }, 
+    {
+        "fire_time": 66600000000.0, 
+        "destination": "LIGHT-KITCHEN", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-KITCHEN"
+    }, 
+    {
+        "fire_time": 66600000000.0, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-LIVING"
+    }, 
+    {
+        "fire_time": 72000000000, 
+        "destination": "LIGHT-LIVING", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-LIVING"
+    }, 
+    {
+        "fire_time": 72000000000, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-KITCHEN"
+    }, 
+    {
+        "fire_time": 72900000000.0, 
+        "destination": "LIGHT-KITCHEN", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-KITCHEN"
+    }, 
+    {
+        "fire_time": 72900000000.0, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-LIVING"
+    }, 
+    {
+        "fire_time": 81000000000.0, 
+        "destination": "LIGHT-LIVING", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-LIVING"
+    }, 
+    {
+        "fire_time": 81000000000.0, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-BATHROOM"
+    }, 
+    {
+        "fire_time": 81900000000.0, 
+        "destination": "LIGHT-BATHROOM", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0
+        }, 
+        "source": "LIGHT-BATHROOM"
+    }, 
+    {
+        "fire_time": 81900000000.0, 
+        "destination": "cloud", 
+        "event_type": 0, 
+        "parameters": {}, 
+        "source": "LIGHT-BATHROOM"
+    }, 
+    {
+        "fire_time": 82800000000, 
+        "destination": "cloud", 
+        "event_type": 2, 
+        "parameters": {
+            "light_brightness": 0, 
+            "light_id": "LIGHT-BEDROOM"
+        }, 
+        "source": "cloud"
+    }, 
+    {
+        "fire_time": 86400000000, 
+        "destination": "", 
+        "event_type": 5, 
+        "parameters": {}, 
+        "source": ""
+    }
+]

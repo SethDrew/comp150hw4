@@ -93,29 +93,31 @@ if(sys.argv[1] == "random"):
 if(sys.argv[1] == "control"):
         events = []
         
+        lights = ["LIGHT-BEDROOM", "LIGHT-BATHROOM", "LIGHT-KITCHEN", "LIGHT-LIVING"]
+        
         for i in range(0,int(sys.argv[2])):
                 events.append({"fire_time": 7*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
-                               "source": "LIGHT-"+str(i+1),
-                               "destination": "LIGHT-"+str(i+1),
+                               "source": lights[i],
+                               "destination": lights[i],
                                "parameters": {"light_brightness": 1}})
         
                 events.append({"fire_time": 9*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
-                               "source": "LIGHT-"+str(i+1),
-                               "destination": "LIGHT-"+str(i+1),
+                               "source": lights[i],
+                               "destination": lights[i],
                                "parameters": {"light_brightness": 0}})
                                
                 events.append({"fire_time": 18*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
-                               "source": "LIGHT-"+str(i+1),
-                               "destination": "LIGHT-"+str(i+1),
+                               "source": lights[i],
+                               "destination": lights[i],
                                "parameters": {"light_brightness": 1}})
                 
                 events.append({"fire_time": 23*3600*MICROSECONDS_IN_SECOND,
                                "event_type": 2,
-                               "source": "LIGHT-"+str(i+1),
-                               "destination": "LIGHT-"+str(i+1),
+                               "source": lights[i],
+                               "destination": lights[i],
                                "parameters": {"light_brightness": 0}})
                                
         events.append({"fire_time": 24*3600*MICROSECONDS_IN_SECOND, # One day
@@ -128,23 +130,17 @@ if(sys.argv[1] == "control"):
         text_file.write(json.dumps(events,indent=4))
         text_file.close()
         
-        components = []
-#        components = [
-#                      { "type": "cloud",
-#                        "name": "cloud",
-#                        "parameters": {"network-node": "NET-0"}
-#                      }]            
+        components = []     
                      
         for i in range(0,int(sys.argv[2])):
                 components.append({ "type": 'device',
-                        "name": "LIGHT-"+str(i+1),
-                        "parameters": { "initial_power_level": 0,
+                        "name": lights[i],
+                        "parameters": { "default-brightness": 1,
                                         "max-lumens": 850,
                                         "lumens-per-watt": 14,
                                         "standby-usage": 0,
                                         "network-node": ""}
                      })
-#                 components.append({ "type": "network", "name": "NET-"+str(i+1)})
                      
         text_file = open("components-control.json", "w")
         text_file.write(json.dumps(components,indent=4))
@@ -187,7 +183,7 @@ if(sys.argv[1] == "motion"):
         for i in range(0,int(sys.argv[2])):
                 components.append({ "type": 'device',
                         "name": "LIGHT-"+str(i+1),
-                        "parameters": { "initial_power_level": 0,
+                        "parameters": { "default-brightness": 1,
                                         "max-lumens": 850,
                                         "lumens-per-watt": 14,
                                         "standby-usage": 5,
@@ -196,5 +192,168 @@ if(sys.argv[1] == "motion"):
                 components.append({ "type": "network", "name": "NET-"+str(i+1)})
                      
         text_file = open("components-motion.json", "w")
+        text_file.write(json.dumps(components,indent=4))
+        text_file.close()
+        
+        
+if(sys.argv[1] == "one-person"):
+        events = []
+        
+
+        events.append({"fire_time": 7*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "cloud",
+                       "destination": "cloud",
+                       "parameters": {"light_id": "LIGHT-BEDROOM",
+                                   "light_brightness": 1}})
+        
+        events.append({"fire_time": 7.5*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-BEDROOM",
+                       "destination": "LIGHT-BEDROOM",
+                       "parameters": {"light_brightness": 0}})
+
+        events.append({"fire_time": 7.5*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 0,
+                       "source": "LIGHT-BATHROOM",
+                       "destination": "cloud",
+                       "parameters": {}})
+        
+        events.append({"fire_time": 8*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-BATHROOM",
+                       "destination": "LIGHT-BATHROOM",
+                       "parameters": {"light_brightness": 0}})
+                       
+        events.append({"fire_time": 8*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 0,
+                       "source": "LIGHT-KITCHEN",
+                       "destination": "cloud",
+                       "parameters": {}})
+                       
+        events.append({"fire_time": 8.5*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-KITCHEN",
+                       "destination": "LIGHT-KITCHEN",
+                       "parameters": {"light_brightness": 0}})
+                       
+        events.append({"fire_time": 8*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 0,
+                       "source": "LIGHT-LIVING",
+                       "destination": "cloud",
+                       "parameters": {}})
+                       
+        events.append({"fire_time": 8.5*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-LIVING",
+                       "destination": "LIGHT-LIVING",
+                       "parameters": {"light_brightness": 0}})
+                       
+                       
+        events.append({"fire_time": 18*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "cloud",
+                       "destination": "cloud",
+                       "parameters": {"light_id": "LIGHT-KITCHEN",
+                                   "light_brightness": 1}})
+        
+        events.append({"fire_time": 18.5*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-KITCHEN",
+                       "destination": "LIGHT-KITCHEN",
+                       "parameters": {"light_brightness": 0}})
+
+        events.append({"fire_time": 18.5*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 0,
+                       "source": "LIGHT-LIVING",
+                       "destination": "cloud",
+                       "parameters": {}})
+        
+        events.append({"fire_time": 20*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-LIVING",
+                       "destination": "LIGHT-LIVING",
+                       "parameters": {"light_brightness": 0}})
+                       
+        events.append({"fire_time": 20*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 0,
+                       "source": "LIGHT-KITCHEN",
+                       "destination": "cloud",
+                       "parameters": {}})
+                       
+        events.append({"fire_time": 20.25*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-KITCHEN",
+                       "destination": "LIGHT-KITCHEN",
+                       "parameters": {"light_brightness": 0}})
+                       
+        events.append({"fire_time": 20.25*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 0,
+                       "source": "LIGHT-LIVING",
+                       "destination": "cloud",
+                       "parameters": {}})
+                       
+        events.append({"fire_time": 22.5*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-LIVING",
+                       "destination": "LIGHT-LIVING",
+                       "parameters": {"light_brightness": 0}})
+        
+        events.append({"fire_time": 22.5*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 0,
+                       "source": "LIGHT-BATHROOM",
+                       "destination": "cloud",
+                       "parameters": {}})
+                       
+        events.append({"fire_time": 22.75*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "LIGHT-BATHROOM",
+                       "destination": "LIGHT-BATHROOM",
+                       "parameters": {"light_brightness": 0}})
+        
+        events.append({"fire_time": 22.75*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 0,
+                       "source": "LIGHT-BATHROOM",
+                       "destination": "cloud",
+                       "parameters": {}})
+                       
+        events.append({"fire_time": 23*3600*MICROSECONDS_IN_SECOND,
+                       "event_type": 2,
+                       "source": "cloud",
+                       "destination": "cloud",
+                       "parameters": {"light_id": "LIGHT-BEDROOM",
+                                   "light_brightness": 0}})
+        
+                               
+        events.append({"fire_time": 24*3600*MICROSECONDS_IN_SECOND, # One day
+               "event_type": 5,
+               "source": "",
+               "destination": "",
+               "parameters": {}});
+        
+        text_file = open("events-one-person.json", "w")
+        text_file.write(json.dumps(events,indent=4))
+        text_file.close()
+        
+        components = [
+                     { "type": "cloud",
+                       "name": "cloud",
+                       "parameters": {"network-node": "NET-0"}
+                     }]            
+        
+        lights = ["LIGHT-BEDROOM", "LIGHT-BATHROOM", "LIGHT-KITCHEN", "LIGHT-LIVING"]
+        
+        for i in range(0,len(lights)):
+                components.append({ "type": 'device',
+                        "name": lights[i],
+                        "parameters": { "default-brightness": 1,
+                                        "max-lumens": 809,
+                                        "lumens-per-watt": 70.3,
+                                        "standby-usage": 5,
+                                        "network-node": "NET-"+str(i+1)}
+                     })
+                components.append({ "type": "network", "name": "NET-"+str(i+1)})
+                     
+        text_file = open("components-one-person.json", "w")
         text_file.write(json.dumps(components,indent=4))
         text_file.close()

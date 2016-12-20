@@ -49,7 +49,8 @@ class Simulator:
                                                            item["parameters"]["network-node"],
                                                            item["parameters"]["lumens-per-watt"],
                                                            item["parameters"]["max-lumens"],
-                                                           item["parameters"]["standby-usage"])
+                                                           item["parameters"]["standby-usage"],
+                                                           item["parameters"]["default-brightness"])
                 if(item["parameters"]["network-node"] != ""):
                     hosts[item["name"]] = item["parameters"]["network-node"]
                 
