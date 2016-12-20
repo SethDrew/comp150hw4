@@ -7,7 +7,7 @@ import json
 
 import heapq
 
-DEBUG = 0
+DEBUG = 1
 VERBOSE = 1
 
 class EventQueue:

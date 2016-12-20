@@ -138,9 +138,9 @@ if(sys.argv[1] == "control"):
                 components.append({ "type": 'device',
                         "name": "LIGHT-"+str(i+1),
                         "parameters": { "initial_power_level": 0,
-                                        "max-lumens": 800,
+                                        "max-lumens": 850,
                                         "lumens-per-watt": 14,
-                                        "standby-usage": 5,
+                                        "standby-usage": 0,
                                         "network-node": "NET-"+str(i+1)}
                      })
                 components.append({ "type": "network", "name": "NET-"+str(i+1)})

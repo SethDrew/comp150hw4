@@ -1,103 +1,103 @@
 [
     {
         "fire_time": 0, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 0, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 1000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 1, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 2000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 0, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 3000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 1, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 4000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 0, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 5000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 1, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 6000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 0, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 7000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 1, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 8000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 0, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 9000000, 
-        "destination": "CLOUD", 
+        "destination": "cloud", 
         "event_type": 2, 
         "parameters": {
             "light_brightness": 1, 
             "light_id": "LIGHT-1"
         }, 
-        "source": "CLOUD"
+        "source": "cloud"
     }, 
     {
         "fire_time": 9000000, 
