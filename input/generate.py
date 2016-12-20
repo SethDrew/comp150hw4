@@ -148,3 +148,52 @@ if(sys.argv[1] == "control"):
         text_file = open("components-control.json", "w")
         text_file.write(json.dumps(components,indent=4))
         text_file.close()
+        
+        
+if(sys.argv[1] == "motion"):
+        events = []
+        
+        for i in range(0,int(sys.argv[2])):
+                events.append({"fire_time": 3600*MICROSECONDS_IN_SECOND,
+                               "event_type": 0,
+                               "source": "LIGHT-"+str(i+1),
+                               "destination": "cloud",
+                               "parameters": {}})
+                
+                events.append({"fire_time": 2*3600*MICROSECONDS_IN_SECOND,
+                               "event_type": 2,
+                               "source": "LIGHT-"+str(i+1),
+                               "destination": "LIGHT-"+str(i+1),
+                               "parameters": {"light_brightness": 0}})
+        
+                               
+        events.append({"fire_time": 3*3600*MICROSECONDS_IN_SECOND, # 3 hours
+               "event_type": 5,
+               "source": "",
+               "destination": "",
+               "parameters": {}});
+        
+        text_file = open("events-motion.json", "w")
+        text_file.write(json.dumps(events,indent=4))
+        text_file.close()
+        
+        components = [
+                     { "type": "cloud",
+                       "name": "cloud",
+                       "parameters": {"network-node": "NET-0"}
+                     }]            
+                     
+        for i in range(0,int(sys.argv[2])):
+                components.append({ "type": 'device',
+                        "name": "LIGHT-"+str(i+1),
+                        "parameters": { "initial_power_level": 0,
+                                        "max-lumens": 850,
+                                        "lumens-per-watt": 14,
+                                        "standby-usage": 5,
+                                        "network-node": "NET-"+str(i+1)}
+                     })
+                components.append({ "type": "network", "name": "NET-"+str(i+1)})
+                     
+        text_file = open("components-motion.json", "w")
+        text_file.write(json.dumps(components,indent=4))
+        text_file.close()

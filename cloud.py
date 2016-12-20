@@ -24,8 +24,8 @@ class Cloud(events.SimObject):
                 "light_brightness" : 0.7,
                 "light_id" : event.source
             }
-            writeCount = writeCount + 1
-            self._time = fire_time
+            self._writeCount = self._writeCount + 1
+            self._time = event.fire_time
             return [brightness_control]
 
         if event.type == events.BRIGHTNESS_CONTROL_EVENT:
