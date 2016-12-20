@@ -128,11 +128,12 @@ if(sys.argv[1] == "control"):
         text_file.write(json.dumps(events,indent=4))
         text_file.close()
         
-        components = [
-                     { "type": "cloud",
-                       "name": "cloud",
-                       "parameters": {"network-node": "NET-0"}
-                     }]            
+        components = []
+#        components = [
+#                      { "type": "cloud",
+#                        "name": "cloud",
+#                        "parameters": {"network-node": "NET-0"}
+#                      }]            
                      
         for i in range(0,int(sys.argv[2])):
                 components.append({ "type": 'device',
@@ -141,9 +142,9 @@ if(sys.argv[1] == "control"):
                                         "max-lumens": 850,
                                         "lumens-per-watt": 14,
                                         "standby-usage": 0,
-                                        "network-node": "NET-"+str(i+1)}
+                                        "network-node": ""}
                      })
-                components.append({ "type": "network", "name": "NET-"+str(i+1)})
+#                 components.append({ "type": "network", "name": "NET-"+str(i+1)})
                      
         text_file = open("components-control.json", "w")
         text_file.write(json.dumps(components,indent=4))
